@@ -19,3 +19,8 @@
 .vertical-spacing {
     margin: 8px 0;
 }
+
+.btn-primary {
+    width: 140px;
+    height: 50px;
+}
