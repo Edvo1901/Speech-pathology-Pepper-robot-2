@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Package name="Untitled" format_version="4">
+<Package name="Robot_Mark_Zero" format_version="4">
     <Manifest src="manifest.xml" />
     <BehaviorDescriptions>
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
@@ -24,6 +24,7 @@
         <File name="index" src="html/index.html" />
         <File name="index" src="html/index.js" />
         <File name="robotutils" src="html/js/robotutils.js" />
+        <File name="dancing" src="html/assets/dancing.mp4" />
     </Resources>
     <Topics />
     <IgnoredPaths />
