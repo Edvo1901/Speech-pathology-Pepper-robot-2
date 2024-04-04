@@ -1,16 +1,15 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    'use strict'
+document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+    var forms = document.querySelectorAll('.needs-validation');
 
-    const forms = document.querySelectorAll('.needs-validation')
-
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
+    Array.prototype.forEach.call(forms, function(form) {
+        form.addEventListener('submit', function(event) {
             if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
+                event.preventDefault();
+                event.stopPropagation();
             }
 
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
+            form.classList.add('was-validated');
+        }, false);
+    });
+});
