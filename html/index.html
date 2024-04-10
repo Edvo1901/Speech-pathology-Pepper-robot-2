@@ -40,6 +40,7 @@
                 </div>
             </div>
         </form>
+        <div class="testing-text"></div>
     </div>
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
@@ -52,10 +53,18 @@
     <script>
         var session = new QiSession();
         session.socket().on('connect', function () {
-            console.log('QiSession connected!');
-            // now you can start using your QiSession
+            // Find the element where you want to display the message
+            var displayDiv = document.querySelector('.testing-text');
+            // Set the text of this element
+            displayDiv.textContent = 'Hello World';
+
+            // This replaces the console.log('QiSession connected!');
         }).on('disconnect', function () {
-            console.log('QiSession disconnected!');
+            var displayDiv = document.querySelector('.testing-text');
+            // Optionally, update or clear the message on disconnect
+            displayDiv.textContent = 'QiSession disconnected!';
+
+            // This replaces the console.log('QiSession disconnected!');
         });
 
         session.service("ALTextToSpeech").done(function (tts) {
