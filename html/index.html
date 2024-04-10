@@ -13,7 +13,7 @@
 <body>
     <div class="consent-page-container">
         <div class="testing-text">testing no display now</div>
-        <div class="testing-text2">test</div>
+        <div class="testing-text2">test ALTextToSpeech</div>
         <h2 class="consent-page-header d-flex justify-content-center">Pepper robot policy</h2>
         <label class="consent-label">
             <b>Usage consent:</b>
@@ -62,24 +62,21 @@
             displayDiv.textContent = "Testing connection";
             session = s;
 
-            s.service("ALTextToSpeech").done(function (tts) {
-            displayDiv.textContent = 'ALTextToSpeech worked';
-            // tts is a proxy to the ALTextToSpeech service
-            tts.getLanguage().done(function (lang) {
-                tts.say("I speak " + lang);
-                displayDiv2.textContent = "IT WORKKKKKKKKKKKKKKKKKKKKKKS";
-            }).fail(function (error) {
-                console.log("An error occurred: " + error);
-                displayDiv2.textContent = "An error occurred1";
-            });
-        }).fail(function (error) {
-            console.log("An error occurred:", error);
-            displayDiv2.textContent = "An error occurred2";
-        });
+            // s.service("ALTextToSpeech").done(function (tts) {
+            // displayDiv.textContent = 'ALTextToSpeech worked';
+            // // tts is a proxy to the ALTextToSpeech service
+            // tts.getLanguage().done(function (lang) {
+            //     tts.say("I speak " + lang);
+            //     displayDiv2.textContent = "IT WORKKKKKKKKKKKKKKKKKKKKKKS";
+            // }).fail(function (error) {
+            //     console.log("An error occurred: " + error);
+            //     displayDiv2.textContent = "An error occurred1";
+            // });
 
-
-
-
+        // }).fail(function (error) {
+        //     console.log("An error occurred:", error);
+        //     displayDiv2.textContent = "An error occurred2";
+        // });
 
         }, disconnected,location.host);
 
@@ -95,24 +92,33 @@
             displayDiv.textContent = "Session disconnected";
         }
 
+
+        session.service("ALTextToSpeech").done(function (tts) {
+                tts.say("Testing it works");
+                displayDiv2.textContent = "IT WORKKKKKKKKKKKKKKKKKKKKKKS";
+            // tts is a proxy to the ALTextToSpeech service
+            }).fail(function (error) {
+            console.log("An error occurred:", error);
+                displayDiv2.textContent = "An error occurred ALTextToSpeech";
+            });
         
 
         //session.connect("192.168.0.168:9559");
 
-        session.socket().on('connect', function () {
-            // Find the element where you want to display the message
-            var displayDiv = document.querySelector('.testing-text');
-            // Set the text of this element
-            displayDiv.textContent = 'socket function worked';
+        // session.socket().on('connect', function () {
+        //     // Find the element where you want to display the message
+        //     var displayDiv = document.querySelector('.testing-text');
+        //     // Set the text of this element
+        //     displayDiv.textContent = 'socket function worked';
 
-            // This replaces the console.log('QiSession connected!');
-        }).on('disconnect', function () {
-            var displayDiv = document.querySelector('.testing-text');
-            // Optionally, update or clear the message on disconnect
-            displayDiv.textContent = 'QiSession disconnected!';
+        //     // This replaces the console.log('QiSession connected!');
+        // }).on('disconnect', function () {
+        //     var displayDiv = document.querySelector('.testing-text');
+        //     // Optionally, update or clear the message on disconnect
+        //     displayDiv.textContent = 'QiSession disconnected!';
 
-            // This replaces the console.log('QiSession disconnected!');
-        });
+        //     // This replaces the console.log('QiSession disconnected!');
+        // });
 
         
     </script>
