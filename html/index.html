@@ -12,6 +12,8 @@
 
 <body>
     <div class="consent-page-container">
+        <div class="testing-text">testing no display now</div>
+        <div class="testing-text2">test</div>
         <h2 class="consent-page-header d-flex justify-content-center">Pepper robot policy</h2>
         <label class="consent-label">
             <b>Usage consent:</b>
@@ -40,7 +42,7 @@
                 </div>
             </div>
         </form>
-        <div class="testing-text"></div>
+        
     </div>
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
@@ -51,12 +53,57 @@
         crossorigin="anonymous"></script>
     <script src="index.js"></script>
     <script>
-        var session = new QiSession();
+        var displayDiv = document.querySelector('.testing-text');
+        var displayDiv2 = document.querySelector('.testing-text2');
+        displayDiv.textContent = 'code running';
+
+        var session = new QiSession(function () {
+            console.log("Session connected");
+            displayDiv.textContent = "Testing connection";
+            session = s;
+
+            s.service("ALTextToSpeech").done(function (tts) {
+            displayDiv.textContent = 'ALTextToSpeech worked';
+            // tts is a proxy to the ALTextToSpeech service
+            tts.getLanguage().done(function (lang) {
+                tts.say("I speak " + lang);
+                displayDiv2.textContent = "IT WORKKKKKKKKKKKKKKKKKKKKKKS";
+            }).fail(function (error) {
+                console.log("An error occurred: " + error);
+                displayDiv2.textContent = "An error occurred1";
+            });
+        }).fail(function (error) {
+            console.log("An error occurred:", error);
+            displayDiv2.textContent = "An error occurred2";
+        });
+
+
+
+
+
+        }, disconnected,location.host);
+
+
+
+        function connected(s) {
+
+            //If you want to subscribe so some events (to send info pepper->tablet) call the function here
+        }
+
+        function disconnected(error) {
+            console.log("Session disconnected");
+            displayDiv.textContent = "Session disconnected";
+        }
+
+        
+
+        //session.connect("192.168.0.168:9559");
+
         session.socket().on('connect', function () {
             // Find the element where you want to display the message
             var displayDiv = document.querySelector('.testing-text');
             // Set the text of this element
-            displayDiv.textContent = 'Hello World';
+            displayDiv.textContent = 'socket function worked';
 
             // This replaces the console.log('QiSession connected!');
         }).on('disconnect', function () {
@@ -67,16 +114,7 @@
             // This replaces the console.log('QiSession disconnected!');
         });
 
-        session.service("ALTextToSpeech").done(function (tts) {
-            // tts is a proxy to the ALTextToSpeech service
-            tts.getLanguage().done(function (lang) {
-                console.log("I speak " + lang);
-            }).fail(function (error) {
-                console.log("An error occurred: " + error);
-            });
-        }).fail(function (error) {
-            console.log("An error occurred:", error);
-        });
+        
     </script>
 </body>
 
