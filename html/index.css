@@ -10,6 +10,7 @@
     border-top: 1px solid;
     border-bottom: 1px solid;
     border-radius: 5px;
+    width: 100vw;
 }
 
 .consent-page-button-group {
