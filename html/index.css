@@ -1,5 +1,5 @@
 .consent-page-container {
-    margin-top: 15em;
+    margin-top: 35vh;
 }
 
 .consent-label {
@@ -10,11 +10,14 @@
     border-top: 1px solid;
     border-bottom: 1px solid;
     border-radius: 5px;
-    width: 100vw;
 }
 
 .consent-page-button-group {
     margin-top: 20px;
+}
+
+.consent-page-button-group button {
+    min-width: 100px;
 }
 
 .vertical-spacing {
