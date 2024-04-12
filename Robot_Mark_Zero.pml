@@ -70,6 +70,12 @@
         <File name="player-export" src="ICT Prototype UI/src/stylesheets/player-export.css" />
         <File name="preview-export-min" src="ICT Prototype UI/src/stylesheets/preview-export-min.css" />
         <File name="preview-letterbox-min" src="ICT Prototype UI/src/stylesheets/preview-letterbox-min.css" />
+        <File name=".behavior.xar.56020" src="Start/.behavior.xar.56020.csp" />
+        <File name="header" src="html/assets/header.png" />
+        <File name="unisa" src="html/assets/unisa.svg" />
+        <File name="header" src="html/components/header/header.css" />
+        <File name="header" src="html/components/header/header.html" />
+        <File name="header" src="html/components/header/header.js" />
     </Resources>
     <Topics />
     <IgnoredPaths />
