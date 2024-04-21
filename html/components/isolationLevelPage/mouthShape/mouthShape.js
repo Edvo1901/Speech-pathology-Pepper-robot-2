@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextStep').addEventListener('click', function() {
-        window.location.href = './mouthShape/mouthShape.html';
+        window.location.href = '../../breakPage/stretchBreak.html';
     });
 });
