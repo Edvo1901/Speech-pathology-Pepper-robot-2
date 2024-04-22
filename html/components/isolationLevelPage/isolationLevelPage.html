@@ -10,7 +10,7 @@
 <body>
     <div>
         <a id="logo" href="./lessonSelection.html">
-            <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="auto">
+            <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="962px">
         </a>
     </div>
     <div class="d-flex justify-content-center align-items-center" style="margin-top: 5vh">
@@ -51,14 +51,14 @@
         }
         function disconnected(error) {
             console.log("Session disconnected");
-            displayDiv.textContent = "Session disconnected";
-        }
+       }
 
         session.service("ALMemory").done(function (memory) {
 
             //this dont work, research more
             memory.raiseEvent("stepFive", "step five is running");
         });
-    </script>
+    </script>      displayDiv.textContent = "Session disconnected";
+       
 </body>
 </html>
