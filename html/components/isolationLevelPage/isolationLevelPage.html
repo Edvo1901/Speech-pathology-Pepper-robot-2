@@ -8,17 +8,24 @@
     <link rel="stylesheet" href="isolationLevelPage.css">
 </head>
 <body>
-    <div class="d-flex justify-content-center align-items-center min-vh-100">
-        <div class="text-center">
-            <h2>Isolation Page</h2>
-            <video width="800" height="400" controls>
-                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
-            </video>
-            <div class="isolation-page-button-group">
-                <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
-                <button type="button" class="btn btn-primary" id="nextStep">Next</button>
-                <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
-                <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+    <div>
+        <a id="logo" href="./lessonSelection.html">
+            <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="auto">
+        </a>
+    </div>
+    <div class="d-flex justify-content-center align-items-center" style="margin-top: 3vh">
+        <div class="card blur-card text-center">
+            <div class="card-body">
+                <h2 class="card-title">Isolation Page</h2>
+                <video width="800" height="400" controls>
+                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                </video>
+                <div class="isolation-page-button-group" style="margin-top: 2vh">
+                    <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
+                    <button type="button" class="btn btn-primary" id="nextStep">Next</button>
+                    <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
+                    <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+                </div>
             </div>
         </div>
     </div>
@@ -35,7 +42,7 @@
 
 
     <script>
-        
+
         var session = new QiSession(function () {
             session = s;
         }, disconnected,location.host);
