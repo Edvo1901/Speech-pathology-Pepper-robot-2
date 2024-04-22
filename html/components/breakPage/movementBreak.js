@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextStep').addEventListener('click', function() {
-        window.location.href = '';
+        window.location.href = '../wordLevelPage/wordLevelPage.html';
     });
 });
