@@ -10,7 +10,7 @@ function disconnected(error) {console.log("Session disconnected");}
 //     //this dont work, research more
 //     memory.raiseEvent("stepEight", "step eight is running")
 
-function ee(session)
+function eeButtonSound(session)
 {
     session.service("ALTextToSpeech").done(function (tts) {
         tts.say("ee as in beach");
@@ -34,3 +34,4 @@ document.addEventListener('DOMContentLoaded', function(session) {
         window.location.href = '../breakPage/movementBreak.html';
     });
 });
+
