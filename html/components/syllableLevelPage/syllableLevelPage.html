@@ -19,7 +19,7 @@
             <h2 class="page-title">Syllable Level</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <button class="image-button" id="eeButtonSound">
+                    <button class="image-button">
                         <img src="../../assets/eeImage.webp" alt="Image 1" class="img-fluid">
                     </button>
                 </div>
@@ -74,20 +74,22 @@
     <script src="syllableLevelPage.js"></script>
     <script>
 
-var session = new qimessaging.QiSession(function () {
-    session = s;
-}, disconnected,location.host);
+        var session = new QiSession(function () {
+            session = s;
+        }, disconnected,location.host);
 
-function disconnected(error) {
-    console.log("Session disconnected");
-    displayDiv.textContent = "Session disconnected";
-}
+        function connected(s) {
+            //If you want to subscribe so some events (to send info pepper->tablet) call the function here
+        }
+        function disconnected(error) {
+            console.log("Session disconnected");
+       }
 
-session.service("ALTextToSpeech").done(function (tts) {
-    tts.say("step eight running");
-}).fail(function (error) {
-console.log("An error occurred:", error);
-});
+        session.service("ALTextToSpeech").done(function (tts) {
+            tts.say("step eight running");
+        }).fail(function (error) {
+        console.log("An error occurred:", error);
+        });
 
     </script>
 </body>
