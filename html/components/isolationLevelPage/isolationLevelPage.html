@@ -13,11 +13,11 @@
             <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="auto">
         </a>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="margin-top: 3vh">
+    <div class="d-flex justify-content-center align-items-center" style="margin-top: 5vh">
         <div class="card blur-card text-center">
             <div class="card-body">
                 <h2 class="card-title">Isolation Page</h2>
-                <video width="800" height="400" controls>
+                <video width="400" height="200" controls>
                     <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                 </video>
                 <div class="isolation-page-button-group" style="margin-top: 2vh">
@@ -42,7 +42,6 @@
 
 
     <script>
-
         var session = new QiSession(function () {
             session = s;
         }, disconnected,location.host);
@@ -50,7 +49,6 @@
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
         }
-
         function disconnected(error) {
             console.log("Session disconnected");
             displayDiv.textContent = "Session disconnected";
