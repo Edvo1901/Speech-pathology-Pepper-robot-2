@@ -1,17 +1,23 @@
+import * as qimessaging from "/libs/qimessaging/2/qimessaging.js";
+import * as qi from "/libs/qi/2/qi.js";
+import * as min from "https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js";
+import * as promise from "https://www.promisejs.org/polyfills/promise-6.0.0.min.js";
+
 document.addEventListener('DOMContentLoaded', function() {
 
     var session = new QiSession(function () {
         session = s;
     }, disconnected,location.host);
-
-    function disconnected(error) {console.log("Session disconnected");}
-
-    document.getElementById('eeButtonSound').addEventListener('click',function(){
-        session.service("ALTextToSpeech").done(function (tts) {
-            tts.say("ee as in beach");
-        }).fail(function (error) {
-        console.log("An error occurred:", error);
-        });
+    
+    function disconnected(error) {
+        console.log("Session disconnected");
+        displayDiv.textContent = "Session disconnected";
+    }
+    
+    session.service("ALTextToSpeech").done(function (tts) {
+        tts.say("ee as in beach");
+    }).fail(function (error) {
+    console.log("An error occurred:", error);
     });
 
     document.getElementById('backToPreviousPage').addEventListener('click', function() {
