@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?><ChoregrapheProject xmlns="http://www.aldebaran-robotics.com/schema/choregraphe/project.xsd" xar_version="3"><Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0"><bitmap>media/images/box/root.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="stepFive" type="0" type_size="1" nature="4" stm_value_name="stepFive" inner="1" tooltip="stepFive desc" id="4" /><Input name="stepSix" type="0" type_size="1" nature="4" stm_value_name="stepSix" inner="1" tooltip="stepSix desc" id="5" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" /><Timeline enable="0"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram scale="84.0896"><Box name="Say Text" id="1" localization="8" tooltip="Say the text received on its input." x="444" y="144"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+        self.tts = ALProxy('ALTextToSpeech')
+        self.ttsStop = ALProxy('ALTextToSpeech', True) #Create another proxy as wait is blocking if audioout is remote
+
+    def onLoad(self):
+        self.bIsRunning = False
+        self.ids = []
+
+    def onUnload(self):
+        for id in self.ids:
+            try:
+                self.ttsStop.stop(id)
+            except:
+                pass
+        while( self.bIsRunning ):
+            time.sleep( 0.2 )
+
+    def onInput_onStart(self, p):
+        self.bIsRunning = True
+        try:
+            sentence = "\RSPD="+ str( self.getParameter("Speed (%)") ) + "\ "
+            sentence += "\VCT="+ str( self.getParameter("Voice shaping (%)") ) + "\ "
+            sentence += str(p)
+            sentence +=  "\RST\ "
+            id = self.tts.post.say(str(sentence))
+            self.ids.append(id)
+            self.tts.wait(id, 0)
+        finally:
+            try:
+                self.ids.remove(id)
+            except:
+                pass
+            if( self.ids == [] ):
+                self.onStopped() # activate output of the box
+                self.bIsRunning = False
+
+    def onInput_onStop(self):
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /><Resource name="Speech" type="Lock" timeout="0" /></Box><Box name="Text Edit" id="2" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="302" y="324"><bitmap>media/images/box/interaction/vocabulary.png</bitmap><script language="4"><content><![CDATA[# /!\ Generated content. Do not edit!
+class MyClass(GeneratedClass):
+	def __init__(self):
+		GeneratedClass.__init__(self)
+
+	def onInput_onStart(self):
+		self.onStopped("Hi, I’m Pepper . Today we are going to learn about our “th” sound. \r\n\r\n ")]]></content></script><pluginContent><text><![CDATA[Hi, I’m Pepper . Today we are going to learn about our “th” sound. 
+
+ ]]></text></pluginContent><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" /><Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" /></Box><Box name="Text Edit (1)" id="3" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="607" y="144"><bitmap>media/images/box/interaction/vocabulary.png</bitmap><script language="4"><content><![CDATA[# /!\ Generated content. Do not edit!
+class MyClass(GeneratedClass):
+	def __init__(self):
+		GeneratedClass.__init__(self)
+
+	def onInput_onStart(self):
+		self.onStopped("The “th” sound is used in words such as “three”, “toothpaste” and “both” .\r\n\r\nWe make the “th” sound by putting the tip of our tongue between our teeth like this.\r\n\r\nth.")]]></content></script><pluginContent><text><![CDATA[The “th” sound is used in words such as “three”, “toothpaste” and “both” .
+
+We make the “th” sound by putting the tip of our tongue between our teeth like this.
+
+th.]]></text></pluginContent><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" /><Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" /></Box><Box name="Text Edit (2)" id="4" localization="8" tooltip="Send the text you entered when the input is stimulated." plugin="textedit_plugin" x="1051" y="145"><bitmap>media/images/box/interaction/vocabulary.png</bitmap><script language="4"><content><![CDATA[# /!\ Generated content. Do not edit!
+class MyClass(GeneratedClass):
+	def __init__(self):
+		GeneratedClass.__init__(self)
+
+	def onInput_onStart(self):
+		self.onStopped("Now its your turn.\r\n\r\nsay. \r\n\r\nth.")]]></content></script><pluginContent><text><![CDATA[Now its your turn.
+
+say. 
+
+th.]]></text></pluginContent><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="1" inner="0" tooltip="To send the text on the output." id="2" /><Output name="onStopped" type="3" type_size="1" nature="2" inner="0" tooltip="The text you entered." id="3" /></Box><Box name="Say Text (1)" id="5" localization="8" tooltip="Say the text received on its input." x="879" y="145"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+        self.tts = ALProxy('ALTextToSpeech')
+        self.ttsStop = ALProxy('ALTextToSpeech', True) #Create another proxy as wait is blocking if audioout is remote
+
+    def onLoad(self):
+        self.bIsRunning = False
+        self.ids = []
+
+    def onUnload(self):
+        for id in self.ids:
+            try:
+                self.ttsStop.stop(id)
+            except:
+                pass
+        while( self.bIsRunning ):
+            time.sleep( 0.2 )
+
+    def onInput_onStart(self, p):
+        self.bIsRunning = True
+        try:
+            sentence = "\RSPD="+ str( self.getParameter("Speed (%)") ) + "\ "
+            sentence += "\VCT="+ str( self.getParameter("Voice shaping (%)") ) + "\ "
+            sentence += str(p)
+            sentence +=  "\RST\ "
+            id = self.tts.post.say(str(sentence))
+            self.ids.append(id)
+            self.tts.wait(id, 0)
+        finally:
+            try:
+                self.ids.remove(id)
+            except:
+                pass
+            if( self.ids == [] ):
+                self.onStopped() # activate output of the box
+                self.bIsRunning = False
+
+    def onInput_onStop(self):
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /><Resource name="Speech" type="Lock" timeout="0" /></Box><Box name="Say Text (2)" id="6" localization="8" tooltip="Say the text received on its input." x="1331" y="152"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+        self.tts = ALProxy('ALTextToSpeech')
+        self.ttsStop = ALProxy('ALTextToSpeech', True) #Create another proxy as wait is blocking if audioout is remote
+
+    def onLoad(self):
+        self.bIsRunning = False
+        self.ids = []
+
+    def onUnload(self):
+        for id in self.ids:
+            try:
+                self.ttsStop.stop(id)
+            except:
+                pass
+        while( self.bIsRunning ):
+            time.sleep( 0.2 )
+
+    def onInput_onStart(self, p):
+        self.bIsRunning = True
+        try:
+            sentence = "\RSPD="+ str( self.getParameter("Speed (%)") ) + "\ "
+            sentence += "\VCT="+ str( self.getParameter("Voice shaping (%)") ) + "\ "
+            sentence += str(p)
+            sentence +=  "\RST\ "
+            id = self.tts.post.say(str(sentence))
+            self.ids.append(id)
+            self.tts.wait(id, 0)
+        finally:
+            try:
+                self.ids.remove(id)
+            except:
+                pass
+            if( self.ids == [] ):
+                self.onStopped() # activate output of the box
+                self.bIsRunning = False
+
+    def onInput_onStop(self):
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /><Resource name="Speech" type="Lock" timeout="0" /></Box><Box name="Wave " id="7" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="462" y="576"><bitmap>media/images/box/movement/move.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="1" fps="25" start_frame="1" end_frame="-1" size="70"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe2" index="2"><Diagram /></BehaviorKeyframe></BehaviorLayer><ActuatorList model="juliette"><ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0"><Key frame="35" value="3.78412" /><Key frame="70" value="-21.8848" /></ActuatorCurve><ActuatorCurve name="value" actuator="HeadYaw" mute="0" unit="0"><Key frame="70" value="1.05469" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipPitch" mute="0" unit="0"><Key frame="35" value="-59.5" /><Key frame="70" value="-2.04713" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipRoll" mute="0" unit="0"><Key frame="70" value="-2.00553e-05" /></ActuatorCurve><ActuatorCurve name="value" actuator="KneePitch" mute="0" unit="0"><Key frame="70" value="-0.633473" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowRoll" mute="0" unit="0"><Key frame="35" value="-51" /><Key frame="70" value="-28.6804" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowYaw" mute="0" unit="0"><Key frame="35" value="-11.7" /><Key frame="70" value="-69.3328" /></ActuatorCurve><ActuatorCurve name="value" actuator="LHand" mute="0" unit="1"><Key frame="35" value="0.378654" /><Key frame="70" value="0.458068" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderPitch" mute="0" unit="0"><Key frame="35" value="12.3" /><Key frame="70" value="89.5836" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderRoll" mute="0" unit="0"><Key frame="35" value="8.35361" /><Key frame="70" value="8.05462" /></ActuatorCurve><ActuatorCurve name="value" actuator="LWristYaw" mute="0" unit="0"><Key frame="35" value="-5.79633" /><Key frame="70" value="-8.08133" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0"><Key frame="35" value="0.5" /><Key frame="70" value="28.4784" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0"><Key frame="35" value="119.5" /><Key frame="70" value="69.722" /></ActuatorCurve><ActuatorCurve name="value" actuator="RHand" mute="0" unit="1"><Key frame="35" value="0.98" /><Key frame="70" value="0.450278" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0"><Key frame="35" value="119.5" /><Key frame="70" value="89.644" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0"><Key frame="35" value="-8.34998" /><Key frame="70" value="-8.13895" /></ActuatorCurve><ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0"><Key frame="35" value="-83.1" /><Key frame="70" value="7.42367" /></ActuatorCurve></ActuatorList></Timeline></Box><Box name="BothArmsBumpInFront_01" id="8" localization="8" tooltip="ID : #01A 0001&#x0A;&#x0A;===================&#x0A;&#x0A;Tags : &#x0A;- Here&#x0A;- There&#x0A;- Now&#x0A;- Present&#x0A;&#x0A;===================&#x0A;&#x0A;Common dialog : Yes&#x0A;&#x0A;===================&#x0A;&#x0A;Start stance : Center&#x0A;End stance : Center" x="592" y="467"><bitmap>media/images/box/movement/move.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="1" fps="25" start_frame="1" end_frame="-1" size="48"><ActuatorList model=""><ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0"><Key frame="15" value="-3.4747" /><Key frame="22" value="1.04209" /><Key frame="33" value="-13.7516" /><Key frame="46" value="-10.2424" /></ActuatorCurve><ActuatorCurve name="value" actuator="HeadYaw" mute="0" unit="0"><Key frame="15" value="1.84332" /><Key frame="22" value="1.84332" /><Key frame="33" value="1.84332" /><Key frame="46" value="1.84332" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipPitch" mute="0" unit="0"><Key frame="17" value="-18.8789" /><Key frame="27" value="-20.6927" /><Key frame="41" value="-3.91708" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipRoll" mute="0" unit="0"><Key frame="17" value="0.194351" /><Key frame="27" value="0.194351" /><Key frame="41" value="0.194351" /></ActuatorCurve><ActuatorCurve name="value" actuator="KneePitch" mute="0" unit="0"><Key frame="17" value="6.69276" /><Key frame="27" value="7.2979" /><Key frame="41" value="-1.7619" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowRoll" mute="0" unit="0"><Key frame="14" value="-56.3" /><Key frame="26" value="-47.7" /><Key frame="32" value="-51.1523" /><Key frame="36" value="-56.2483" /><Key frame="48" value="-60.7308" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowYaw" mute="0" unit="0"><Key frame="14" value="-71" /><Key frame="26" value="-92.904" /><Key frame="32" value="-90.4395" /><Key frame="36" value="-86.8394" /><Key frame="48" value="-85.7847" /></ActuatorCurve><ActuatorCurve name="value" actuator="LHand" mute="0" unit="1"><Key frame="14" value="0.856834" /><Key frame="26" value="0.8596" /><Key frame="32" value="0.796134" /><Key frame="36" value="0.6988" /><Key frame="48" value="0.5484" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderPitch" mute="0" unit="0"><Key frame="14" value="84.9505" /><Key frame="26" value="84.5494" /><Key frame="32" value="84.9023" /><Key frame="36" value="85.0768" /><Key frame="48" value="84.6373" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderRoll" mute="0" unit="0"><Key frame="14" value="13.6255" /><Key frame="26" value="14.1459" /><Key frame="32" value="13.2715" /><Key frame="36" value="12.3881" /><Key frame="48" value="12.6518" /></ActuatorCurve><ActuatorCurve name="value" actuator="LWristYaw" mute="0" unit="0"><Key frame="14" value="-40.6286" /><Key frame="26" value="-40.1689" /><Key frame="32" value="-40.8721" /><Key frame="36" value="-41.8389" /><Key frame="48" value="-41.4873" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0"><Key frame="12" value="74.7" /><Key frame="24" value="53.9679" /><Key frame="30" value="56.8652" /><Key frame="34" value="58.8899" /><Key frame="46" value="64.2513" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0"><Key frame="12" value="71.1899" /><Key frame="24" value="108.3" /><Key frame="30" value="91.4941" /><Key frame="34" value="84.2858" /><Key frame="46" value="83.7584" /></ActuatorCurve><ActuatorCurve name="value" actuator="RHand" mute="0" unit="1"><Key frame="12" value="0.1084" /><Key frame="24" value="0.8564" /><Key frame="30" value="0.760105" /><Key frame="34" value="0.6984" /><Key frame="46" value="0.5428" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0"><Key frame="12" value="74.2199" /><Key frame="24" value="86.6637" /><Key frame="30" value="87.1875" /><Key frame="34" value="87.0152" /><Key frame="46" value="86.8394" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0"><Key frame="12" value="-17.7128" /><Key frame="24" value="-23.1632" /><Key frame="30" value="-21.7969" /><Key frame="34" value="-21.2821" /><Key frame="46" value="-16.9218" /></ActuatorCurve><ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0"><Key frame="12" value="45.3497" /><Key frame="24" value="49.7443" /><Key frame="30" value="50.4474" /><Key frame="34" value="51.2385" /><Key frame="46" value="51.0627" /></ActuatorCurve></ActuatorList></Timeline><Resource name="Standing" type="Lock" timeout="1" /><Resource name="All motors" type="Lock" timeout="1" /></Box><Box name="PointFrontLeftArm_LeanLeft_01" id="9" localization="8" tooltip="ID : #01A 0008&#x0A;&#x0A;===================&#x0A;&#x0A;Tags : &#x0A;- There&#x0A;- Future&#x0A;- Left&#x0A;- Far&#x0A;&#x0A;===================&#x0A;&#x0A;Common dialog : Yes&#x0A;&#x0A;===================&#x0A;&#x0A;Start stance : LeanLeft&#x0A;End stance : LeanLeft" x="731" y="464"><bitmap>media/images/box/movement/move.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="1" fps="25" start_frame="1" end_frame="-1" size="30"><ActuatorList model=""><ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0"><Key frame="18" value="-16.5299" /><Key frame="24" value="-9.99144" /><Key frame="30" value="-14.9914" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowRoll" mute="0" unit="0"><Key frame="11" value="-38.4" /><Key frame="17" value="-45" /><Key frame="22" value="-49.3066" /><Key frame="27" value="-50.2" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowYaw" mute="0" unit="0"><Key frame="11" value="-97.1" /><Key frame="17" value="-102.7" /><Key frame="22" value="-107.754" /><Key frame="27" value="-108.3" /></ActuatorCurve><ActuatorCurve name="value" actuator="LHand" mute="0" unit="1"><Key frame="11" value="0.8" /><Key frame="17" value="0.98" /><Key frame="22" value="0.94464" /><Key frame="27" value="0.98" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderPitch" mute="0" unit="0"><Key frame="11" value="34" /><Key frame="17" value="26.354" /><Key frame="22" value="41.0449" /><Key frame="27" value="45.6" /></ActuatorCurve><ActuatorCurve name="value" actuator="LWristYaw" mute="0" unit="0"><Key frame="11" value="-45.7" /><Key frame="17" value="-53.9" /><Key frame="22" value="-52.5617" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0"><Key frame="13" value="22.4" /><Key frame="19" value="35.3" /><Key frame="25" value="21.4453" /><Key frame="29" value="18.3" /></ActuatorCurve><ActuatorCurve name="value" actuator="RHand" mute="0" unit="1"><Key frame="19" value="0.53" /><Key frame="25" value="0.718805" /><Key frame="29" value="0.78" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0"><Key frame="19" value="83.584" /><Key frame="25" value="83.7598" /><Key frame="29" value="83.4" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0"><Key frame="13" value="-10.0033" /><Key frame="19" value="-20.3198" /><Key frame="25" value="-11.4352" /><Key frame="29" value="-6.7099" /></ActuatorCurve><ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0"><Key frame="13" value="0.0841371" /><Key frame="19" value="-15.8448" /><Key frame="25" value="-0.0902951" /><Key frame="29" value="3.25517" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderRoll" mute="0" unit="0"><Key frame="22" value="12.832" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0"><Key frame="13" value="78.4" /><Key frame="19" value="67.2037" /><Key frame="25" value="88.5059" /><Key frame="29" value="93.4" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipPitch" mute="0" unit="0"><Key frame="12" value="-3.28783" /><Key frame="24" value="-3.28783" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipRoll" mute="0" unit="0"><Key frame="12" value="5.09925" /><Key frame="24" value="4.24257" /></ActuatorCurve><ActuatorCurve name="value" actuator="KneePitch" mute="0" unit="0"><Key frame="12" value="-1.02953" /><Key frame="24" value="-1.02953" /></ActuatorCurve></ActuatorList></Timeline><Resource name="Standing" type="Lock" timeout="1" /><Resource name="All motors" type="Lock" timeout="1" /></Box><Box name="Point at screen" id="11" localization="8" tooltip="This box is empty (contains a single motion layer with no motor position&#x0A;defined in it) and should be used to create any animation you would like." x="1078" y="299"><bitmap>media/images/box/movement/move.png</bitmap><script language="4"><content><![CDATA[]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /><Timeline enable="1" fps="25" start_frame="1" end_frame="-1" size="91"><BehaviorLayer name="behavior_layer1"><BehaviorKeyframe name="keyframe1" index="1"><Diagram /></BehaviorKeyframe></BehaviorLayer><ActuatorList model="juliette"><ActuatorCurve name="value" actuator="HeadPitch" mute="0" unit="0"><Key frame="91" value="-12.832" /></ActuatorCurve><ActuatorCurve name="value" actuator="HeadYaw" mute="0" unit="0"><Key frame="91" value="-3.60351" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipPitch" mute="0" unit="0"><Key frame="91" value="-7.11915" /></ActuatorCurve><ActuatorCurve name="value" actuator="HipRoll" mute="0" unit="0"><Key frame="91" value="-0.351564" /></ActuatorCurve><ActuatorCurve name="value" actuator="KneePitch" mute="0" unit="0"><Key frame="91" value="0.615236" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowRoll" mute="0" unit="0"><Key frame="40" value="-11.5137" /><Key frame="91" value="-11.5137" /></ActuatorCurve><ActuatorCurve name="value" actuator="LElbowYaw" mute="0" unit="0"><Key frame="40" value="-82.8809" /><Key frame="91" value="-82.8809" /></ActuatorCurve><ActuatorCurve name="value" actuator="LHand" mute="0" unit="1"><Key frame="40" value="0.490334" /><Key frame="91" value="0.479789" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderPitch" mute="0" unit="0"><Key frame="40" value="92.1973" /><Key frame="91" value="92.9004" /></ActuatorCurve><ActuatorCurve name="value" actuator="LShoulderRoll" mute="0" unit="0"><Key frame="40" value="4.48242" /><Key frame="91" value="4.48242" /></ActuatorCurve><ActuatorCurve name="value" actuator="LWristYaw" mute="0" unit="0"><Key frame="40" value="-20.1296" /><Key frame="91" value="-20.1296" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowRoll" mute="0" unit="0"><Key frame="40" value="89.5" /><Key frame="91" value="11.9531" /></ActuatorCurve><ActuatorCurve name="value" actuator="RElbowYaw" mute="0" unit="0"><Key frame="40" value="11.2" /><Key frame="91" value="85.0781" /></ActuatorCurve><ActuatorCurve name="value" actuator="RHand" mute="0" unit="1"><Key frame="40" value="0.52" /><Key frame="91" value="0.515817" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderPitch" mute="0" unit="0"><Key frame="40" value="-1.9" /><Key frame="91" value="91.9336" /></ActuatorCurve><ActuatorCurve name="value" actuator="RShoulderRoll" mute="0" unit="0"><Key frame="40" value="-14.7" /><Key frame="91" value="-4.48242" /></ActuatorCurve><ActuatorCurve name="value" actuator="RWristYaw" mute="0" unit="0"><Key frame="40" value="90.6" /><Key frame="91" value="22.6737" /></ActuatorCurve></ActuatorList></Timeline></Box><Box name="Python Script" id="10" localization="8" tooltip="This box contains a basic python script and can be used to create any python script box you would like.&#x0A;&#x0A;To edit its script, double-click on it." x="464" y="4"><bitmap>media/images/box/box-python-script.png</bitmap><script language="4"><content><![CDATA[class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onLoad(self):
+        #put initialization code here
+        #s = qi.Session()
+        #s.connect("tcp://192.168.0.160:9559")
+
+        uid = self.packageUid()
+        self.session().service('ALTabletService').loadApplication(uid)
+
+        #tabletService = s.service("ALTabletService")
+
+        #tabletService.showWebview("https://main--soft-queijadas-e4bc68.netlify.app/")
+        self.session().service('ALTabletService').showWebview()
+        pass
+
+    def onUnload(self):
+        #put clean-up code here
+        pass
+
+    def onInput_onStart(self):
+        #self.onStopped() #activate the output of the box
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" /></Box><Box name="Say Text (3)" id="12" localization="8" tooltip="Say the text received on its input." x="176" y="253"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self, False)
+        self.tts = ALProxy('ALTextToSpeech')
+        self.ttsStop = ALProxy('ALTextToSpeech', True) #Create another proxy as wait is blocking if audioout is remote
+
+    def onLoad(self):
+        self.bIsRunning = False
+        self.ids = []
+
+    def onUnload(self):
+        for id in self.ids:
+            try:
+                self.ttsStop.stop(id)
+            except:
+                pass
+        while( self.bIsRunning ):
+            time.sleep( 0.2 )
+
+    def onInput_onStart(self, p):
+        self.bIsRunning = True
+        try:
+            sentence = "\RSPD="+ str( self.getParameter("Speed (%)") ) + "\ "
+            sentence += "\VCT="+ str( self.getParameter("Voice shaping (%)") ) + "\ "
+            sentence += str(p)
+            sentence +=  "\RST\ "
+            id = self.tts.post.say(str(sentence))
+            self.ids.append(id)
+            self.tts.wait(id, 0)
+        finally:
+            try:
+                self.ids.remove(id)
+            except:
+                pass
+            if( self.ids == [] ):
+                self.onStopped() # activate output of the box
+                self.bIsRunning = False
+
+    def onInput_onStop(self):
+        self.onUnload()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when Diagram is loaded." id="1" /><Input name="onStart" type="3" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this Input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this Input." id="3" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when Box behavior is finished." id="4" /><Parameter name="Voice shaping (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="150" tooltip='Used to modify at runtime the voice feature (tone, speed). In a slighty&#x0A;different way than pitch and speed, it gives a kind of &quot;gender or age&#x0A;modification&quot; effect.&#x0A;&#x0A;For instance, a quite good male derivation of female voice can be&#x0A;obtained setting this parameter to 78%.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the&#x0A;speed parameter. For example, if you want to decrease by 20% the voice&#x0A;shaping, you will have to increase by 20% the speed to keep a constant&#x0A;average speed.' id="5" /><Parameter name="Speed (%)" inherits_from_parent="1" content_type="1" value="100" default_value="100" min="50" max="200" tooltip="Changes the speed of the voice.&#x0A;&#x0A;Note: For a better effect, you can compensate this parameter with the voice&#x0A;shaping parameter. For example, if you want to increase by 20% the speed, you&#x0A;will have to decrease by 20% the voice shaping to keep a constant average&#x0A;speed." id="6" /><Resource name="Speech" type="Lock" timeout="0" /></Box><Link inputowner="1" indexofinput="2" outputowner="2" indexofoutput="3" /><Link inputowner="3" indexofinput="2" outputowner="1" indexofoutput="4" /><Link inputowner="5" indexofinput="2" outputowner="3" indexofoutput="3" /><Link inputowner="4" indexofinput="2" outputowner="5" indexofoutput="4" /><Link inputowner="6" indexofinput="2" outputowner="4" indexofoutput="3" /><Link inputowner="8" indexofinput="2" outputowner="1" indexofoutput="4" /><Link inputowner="9" indexofinput="2" outputowner="8" indexofoutput="4" /><Link inputowner="11" indexofinput="2" outputowner="5" indexofoutput="4" /><Link inputowner="10" indexofinput="2" outputowner="0" indexofoutput="2" /><Link inputowner="0" indexofinput="6" outputowner="10" indexofoutput="4" /><Link inputowner="12" indexofinput="2" outputowner="0" indexofoutput="4" /><Link inputowner="2" indexofinput="2" outputowner="12" indexofoutput="4" /><Link inputowner="7" indexofinput="2" outputowner="12" indexofoutput="4" /></Diagram></BehaviorKeyframe></BehaviorLayer></Timeline></Box></ChoregrapheProject>

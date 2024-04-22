@@ -3,7 +3,6 @@
     <Manifest src="manifest.xml" />
     <BehaviorDescriptions>
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
-        <BehaviorDescription name="behavior" src="Start" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs />
     <Resources>
@@ -70,12 +69,33 @@
         <File name="player-export" src="ICT Prototype UI/src/stylesheets/player-export.css" />
         <File name="preview-export-min" src="ICT Prototype UI/src/stylesheets/preview-export-min.css" />
         <File name="preview-letterbox-min" src="ICT Prototype UI/src/stylesheets/preview-letterbox-min.css" />
-        <File name=".behavior.xar.56020" src="Start/.behavior.xar.56020.csp" />
         <File name="header" src="html/assets/header.png" />
         <File name="unisa" src="html/assets/unisa.svg" />
         <File name="header" src="html/components/header/header.css" />
         <File name="header" src="html/components/header/header.html" />
         <File name="header" src="html/components/header/header.js" />
+        <File name="ayImage" src="html/assets/ayImage.webp" />
+        <File name="breakImage" src="html/assets/breakImage.png" />
+        <File name="eeImage" src="html/assets/eeImage.webp" />
+        <File name="finalPosition" src="html/assets/finalPosition.webp" />
+        <File name="iiImage" src="html/assets/iiImage.webp" />
+        <File name="initialPosition" src="html/assets/initialPosition.webp" />
+        <File name="medicalPosition" src="html/assets/medicalPosition.webp" />
+        <File name="ohImage" src="html/assets/ohImage.webp" />
+        <File name="ooImage" src="html/assets/ooImage.webp" />
+        <File name="owImage" src="html/assets/owImage.webp" />
+        <File name="oyImage" src="html/assets/oyImage.webp" />
+        <File name="movementBreak" src="html/components/breakPage/movementBreak.html" />
+        <File name="movementBreak" src="html/components/breakPage/movementBreak.js" />
+        <File name="stretchBreak" src="html/components/breakPage/stretchBreak.css" />
+        <File name="stretchBreak" src="html/components/breakPage/stretchBreak.html" />
+        <File name="stretchBreak" src="html/components/breakPage/stretchBreak.js" />
+        <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.css" />
+        <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.html" />
+        <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.js" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.css" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.html" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.js" />
     </Resources>
     <Topics />
     <IgnoredPaths />
