@@ -65,3 +65,17 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     background-image: linear-gradient(to right, #0056b3, #003875);
 }
+
+.row {
+    margin: 0 -15px;
+}
+
+.col-md-4, .col-md-3 {
+    padding: 15px;
+    border-right: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+}
+
+.col-md-4:last-child, .col-md-3:last-child {
+    border-right: none;
+}
