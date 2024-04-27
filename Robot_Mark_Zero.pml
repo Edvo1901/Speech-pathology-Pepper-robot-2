@@ -4,7 +4,10 @@
     <BehaviorDescriptions>
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
     </BehaviorDescriptions>
-    <Dialogs />
+    <Dialogs>
+        <Dialog name="ExampleDialog" src="behavior_1/ExampleDialog/ExampleDialog.dlg" />
+        <Dialog name="voiceNav" src="voiceNav/voiceNav.dlg" />
+    </Dialogs>
     <Resources>
         <File name="thMouthShape" src="html/assets/thMouthShape.png" />
         <File name="video-homepage" src="html/assets/video-homepage.mp4" />
@@ -97,7 +100,10 @@
         <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.html" />
         <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.js" />
     </Resources>
-    <Topics />
+    <Topics>
+        <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
+        <Topic name="voiceNav_enu" src="voiceNav/voiceNav_enu.top" topicName="voiceNav" language="en_US" />
+    </Topics>
     <IgnoredPaths />
     <Translations auto-fill="en_US">
         <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />
