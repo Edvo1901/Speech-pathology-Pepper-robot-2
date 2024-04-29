@@ -1,0 +1,14 @@
+@import url("../../../share.css");
+
+.styled-image {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.19);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.styled-image:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 12px 40px rgba(0,0,0,0.24);
+}
+

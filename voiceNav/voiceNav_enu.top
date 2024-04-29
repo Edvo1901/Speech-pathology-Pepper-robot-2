@@ -1,0 +1,14 @@
+topic: ~voiceNav()
+language: enu
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+concept:(testingChat) ["testing"]
+
+# Catching inputs and triggering outputs
+#u:(e:onStart) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u:([~testingChat e:input_testingChat]) $output_testingChat=1 I heard you saying testing, got it.
+
