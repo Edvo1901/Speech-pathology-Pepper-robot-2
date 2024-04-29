@@ -9,6 +9,5 @@ concept:(testingChat) ["testing"]
 #u:(e:onStart) $onStopped=1
 
 # Replying to speech
-#u:(~hello) ~hello
 u:([~testingChat e:input_testingChat]) $output_testingChat=1 I heard you saying testing, got it.
 
