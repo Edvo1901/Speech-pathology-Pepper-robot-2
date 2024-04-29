@@ -15,14 +15,14 @@
 .image-button {
     background: none;
     border: none;
-    padding: 0; /* You can adjust this padding to reduce the size further */
-    display: inline-block; /* Changed from block to inline-block for more control */
-    width: auto; /* Adjust width or use auto to fit content */
-    margin: 10px; /* Custom margin between buttons */
+    padding: 0;
+    display: inline-block;
+    width: auto;
+    margin: 10px;
 }
 
 .image-button img {
-    height: 200px;
+    height: 180px;
     width: 200px;
     border-radius: 8px;
     transition: transform 0.3s ease;
@@ -37,7 +37,7 @@
     margin-left: 0;
     margin-right: 0;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .image-col {
