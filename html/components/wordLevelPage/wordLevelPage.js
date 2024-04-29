@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    $("#header-placeholder").load("../header/header.html");
+    
     document.getElementById('backToPreviousPage').addEventListener('click', function() {
         window.location.href = '../breakPage/movementBreak.html';
     });
@@ -22,6 +24,4 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('finalPosition').addEventListener('click', function() {
         window.location.href = './final/finalPosition.html';
     });
-
-    $("#header-placeholder").load("../header/header.html");
 });
