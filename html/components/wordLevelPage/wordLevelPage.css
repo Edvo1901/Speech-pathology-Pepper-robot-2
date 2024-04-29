@@ -29,3 +29,20 @@
     transform: scale(1.05);
     cursor: pointer;
 }
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.image-col {
+    flex: 1;
+    display: flex;
+    padding: 0;
+    margin: 0 15px;
+}
+
+.image-button img {
+    height: 200px;
+    width: 200px;
+}
