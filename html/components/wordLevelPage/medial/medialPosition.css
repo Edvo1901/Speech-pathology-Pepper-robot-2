@@ -34,3 +34,7 @@
     flex-wrap: wrap;
 }
 
+.button-column .btn {
+    width: 250px;
+}
+
