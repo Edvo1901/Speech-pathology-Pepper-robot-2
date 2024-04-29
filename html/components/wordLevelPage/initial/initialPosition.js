@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // List of words or phrases to choose from
-    const words = [
+    var words = [
         '<u>Th</u>ree',
         '<u>Th</u>ick',
         '<u>Th</u>row',
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to shuffle an array
     function shuffle(array) {
-        let currentIndex = array.length, temporaryValue, randomIndex;
+        var currentIndex = array.length, temporaryValue, randomIndex;
 
         // While there remain elements to shuffle
         while (0 !== currentIndex) {
@@ -54,14 +54,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Shuffle the array of words
     shuffle(words);
 
-    const buttons = document.querySelectorAll('.word-button');
+    var buttons = document.querySelectorAll('.word-button');
 
     // Assign a random word from the array to each button
-    buttons.forEach((button, index) => {
-        if (index < words.length) {
-            button.innerHTML = words[index];
+    if (buttons.length > 0) {
+        for (var i = 0; i < buttons.length; i++) {
+            if (i < words.length) {
+                buttons[i].innerHTML = words[i];
+            }
         }
-    });
+    }
 });
 
 
