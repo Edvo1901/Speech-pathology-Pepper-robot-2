@@ -1,22 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@600&family=Merriweather+Sans:wght@500&family=Overpass&family=Poppins:ital,wght@0,500;1,400&display=swap');
-
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1280' height='800' preserveAspectRatio='none' viewBox='0 0 1280 800'%3e%3cg mask='url(%26quot%3b%23SvgjsMask6130%26quot%3b)' fill='none'%3e%3crect width='1280' height='800' x='0' y='0' fill='url(%26quot%3b%23SvgjsRadialGradient6131%26quot%3b)'%3e%3c/rect%3e%3cpath d='M108.579%2c933.709C175.563%2c935.395%2c227.559%2c882.779%2c261.35%2c824.919C295.504%2c766.439%2c317.703%2c694.146%2c282.152%2c636.504C247.753%2c580.729%2c173.993%2c573.316%2c108.579%2c577.216C51.078%2c580.644%2c-3.51%2c605.489%2c-32.505%2c655.262C-61.69%2c705.362%2c-57.631%2c765.827%2c-31.425%2c817.548C-2.05%2c875.524%2c43.607%2c932.073%2c108.579%2c933.709' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M1380.1084434282423 533.6923761694279L1320.111044062695 309.77903341520584 1156.19510067402 593.689775534975z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M704.59452675085 569.7475772905708L901.1830701506498 456.24712883909984 591.0940782993791 373.15903389077107z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1066.1569590604793 283.75295900997736L1122.8357016381283 469.1407725824696 1308.2235152106205 412.4620300048206 1251.5447726329714 227.0742164323283z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M393.3436279586611 228.44379109273808L251.29739434956494 410.254679185244 433.10828244207084 552.3009127943401 575.1545160511671 370.4900247018343z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M564.5432702028963-19.43433323024862L354.05689946488445 44.91780833324399 418.40904102837703 255.40417907125584 628.895411766389 191.05203750776326z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float1'%3e%3c/path%3e%3cpath d='M988.548763198894 474.90079935389156L1116.0195509864245 521.2963718470163 1162.4151234795493 393.8255840594859 1034.9443356920187 347.43001156636115z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float2'%3e%3c/path%3e%3cpath d='M827.0624474127331 233.3845386746265L1010.6955467073717 173.71852783350536 951.0295358662506-9.914571461133221 767.3964365716121 49.751439379987914z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float3'%3e%3c/path%3e%3cpath d='M1013.0979568630206 107.80618588267677L970.8284416369468-61.727579855863354 843.5641911244804 150.07570110875065z' fill='rgba(154%2c 154%2c 160%2c 0.36)' class='triangle-float2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask6130'%3e%3crect width='1280' height='800' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cradialGradient cx='50%25' cy='50%25' r='754.72' gradientUnits='userSpaceOnUse' id='SvgjsRadialGradient6131'%3e%3cstop stop-color='rgba(172%2c 174%2c 176%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(170%2c 173%2c 176%2c 1)' offset='0.07'%3e%3c/stop%3e%3cstop stop-color='rgba(234%2c 234%2c 234%2c 1)' offset='0.63'%3e%3c/stop%3e%3c/radialGradient%3e%3cstyle%3e %40keyframes float1 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-10px%2c 0)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float1 %7b animation: float1 5s infinite%3b %7d %40keyframes float2 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(-5px%2c -5px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float2 %7b animation: float2 4s infinite%3b %7d %40keyframes float3 %7b 0%25%7btransform: translate(0%2c 0)%7d 50%25%7btransform: translate(0%2c -10px)%7d 100%25%7btransform: translate(0%2c 0)%7d %7d .triangle-float3 %7b animation: float3 6s infinite%3b %7d %3c/style%3e%3c/defs%3e%3c/svg%3e");
-    background-size: cover;
-    background-position: center;
-    font-family: 'Overpass', sans-serif;
-}
-
-.card-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
+@import url("../../../share.css");
 
 .styled-image {
     border-radius: 20px;
@@ -28,35 +10,5 @@ body, html {
 
 .styled-image:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.2), 0 12px 40px rgba(0,0,0,0.24);
-}
-
-.btn-primary {
-    padding: 20px 60px;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    background-image: linear-gradient(to right, #4073c0, #264da1);
-    border: none;
-    border-radius: 30px;
-    color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 10px;
-}
-
-.btn-primary:hover, .btn-primary:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-image: linear-gradient(to right, #0056b3, #003875);
-}
-
-.blur-card {
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 15px;
-    border: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
