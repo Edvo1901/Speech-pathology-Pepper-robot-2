@@ -14,4 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('initialPosition').addEventListener('click', function() {
         window.location.href = './initial/initialPosition.html';
     });
+
+    document.getElementById('medialPosition').addEventListener('click', function() {
+        window.location.href = './medial/medialPosition.html';
+    });
+
+    document.getElementById('finalPosition').addEventListener('click', function() {
+        window.location.href = './final/finalPosition.html';
+    });
 });
