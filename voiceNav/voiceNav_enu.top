@@ -4,10 +4,12 @@ language: enu
 # Defining extra concepts out of words or group of words
 #concept:(hello) [hello hi hey "good morning" greetings]
 concept:(testingChat) ["testing"]
+concept:(demoChat) ["Hello, Pepper"]
 
 # Catching inputs and triggering outputs
 #u:(e:onStart) $onStopped=1
 
 # Replying to speech
 u:([~testingChat e:input_testingChat]) $output_testingChat=1 I heard you saying testing, got it.
+u:([~demoChat e:input_demoChat]) $output_demoChat=1 Hi, I am Pepper I am your assistant for today's session, how can I help you.
 
