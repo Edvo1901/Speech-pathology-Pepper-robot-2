@@ -16,39 +16,39 @@
             <div class="row">
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/eeImage.webp" alt="Image 1" class="img-fluid">
+                        <img src="../../assets/EE.png" alt="Image 1" class="img-fluid" onClick="imageButton('e')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/ayImage.webp" alt="Image 2" class="img-fluid">
+                        <img src="../../assets/AY.png" alt="Image 2" class="img-fluid" onClick="imageButton('a')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/ooImage.webp" alt="Image 3" class="img-fluid">
+                        <img src="../../assets/OO.png" alt="Image 3" class="img-fluid" onClick="imageButton('oo')">
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/owImage.webp" alt="Image 4" class="img-fluid">
+                        <img src="../../assets/OW.png" alt="Image 4" class="img-fluid" onClick="imageButton('ow')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/oyImage.webp" alt="Image 5" class="img-fluid">
+                        <img src="../../assets/OY.png" alt="Image 5" class="img-fluid" onClick="imageButton('oy')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/iiImage.webp" alt="Image 6" class="img-fluid">
+                        <img src="../../assets/II.png" alt="Image 6" class="img-fluid" onClick="imageButton('i')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/ohImage.webp" alt="Image 7" class="img-fluid">
+                        <img src="../../assets/OH.png" alt="Image 7" class="img-fluid" onClick="imageButton('oh')">
                     </button>
                 </div>
             </div>
@@ -88,11 +88,20 @@
         console.log("An error occurred:", error);
         });
 
-        session.service("ALMemory").done(function (memory) {
+        // session.service("ALMemory").done(function (memory) {
 
-            //this dont work, research more
-            memory.raiseEvent("stepEight", True);
-        });
+        //     //this dont work, research more
+        //     memory.raiseEvent("stepEight", True);
+        // });
+
+        function imageButton(input)
+        {
+            session.service("ALTextToSpeech").done(function (tts) {
+            tts.say(input);
+            }).fail(function (error) {
+            console.log("An error occurred:", error);
+            });
+        }
 
     </script>
 </body>

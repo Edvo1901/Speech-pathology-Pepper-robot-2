@@ -114,6 +114,13 @@
         <File name="mouthShape" src="html/components/mouthShape/mouthShape.css" />
         <File name="mouthShape" src="html/components/mouthShape/mouthShape.html" />
         <File name="mouthShape" src="html/components/mouthShape/mouthShape.js" />
+        <File name="AY" src="html/assets/AY.png" />
+        <File name="EE" src="html/assets/EE.png" />
+        <File name="II" src="html/assets/II.png" />
+        <File name="OH" src="html/assets/OH.png" />
+        <File name="OO" src="html/assets/OO.png" />
+        <File name="OW" src="html/assets/OW.png" />
+        <File name="OY" src="html/assets/OY.png" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
