@@ -5,6 +5,8 @@ language: enu
 #concept:(hello) [hello hi hey "good morning" greetings]
 concept:(testingChat) ["testing"]
 concept:(demoChat) ["Hello, Pepper"]
+concept:(jeffChat) ["Hey, Jeff"]
+concept:(lookChat) ["Why are you looking at me?"]
 
 # Catching inputs and triggering outputs
 #u:(e:onStart) $onStopped=1
@@ -12,4 +14,7 @@ concept:(demoChat) ["Hello, Pepper"]
 # Replying to speech
 u:([~testingChat e:input_testingChat]) $output_testingChat=1 I heard you saying testing, got it.
 u:([~demoChat e:input_demoChat]) $output_demoChat=1 Hi, I am Pepper I am your assistant for today's session, how can I help you.
+u:([~jeffChat e:input_jeffChat]) $output_jeffChat=1 Oh my god, you are such a handsome man.
+u:([~lookChat e:input_lookChat]) $output_lookChat=1 Because I have eyes.
+
 
