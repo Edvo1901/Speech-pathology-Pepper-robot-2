@@ -574,16 +574,17 @@ class MyClass(GeneratedClass):
 
     def onInput_rightClear(self):
         self.right_clear = true
-
+        self.checker()
 
     def onInput_leftClear(self):
         self.left_clear = true
+        self.checker()
 
     def checker(self):
         if(self.left_clear == true and self.right_clear == true)
             self.spaceClear()
         else:
-            self.notClear()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="rightClear" type="1" type_size="1" nature="1" inner="0" tooltip="" id="4" /><Input name="leftClear" type="1" type_size="1" nature="1" inner="0" tooltip="" id="5" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" /><Output name="spaceClear" type="1" type_size="1" nature="2" inner="0" tooltip="" id="7" /><Output name="notClear" type="1" type_size="1" nature="2" inner="0" tooltip="" id="8" /></Box><Box name="Say" id="33" localization="8" tooltip="Say some text. The text can be localized." x="866" y="454"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
+            self.notClear()]]></content></script><Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" /><Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" /><Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" /><Input name="rightClear" type="1" type_size="1" nature="1" inner="0" tooltip="" id="4" /><Input name="leftClear" type="1" type_size="1" nature="1" inner="0" tooltip="" id="5" /><Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="6" /><Output name="spaceClear" type="1" type_size="1" nature="2" inner="0" tooltip="" id="7" /><Output name="notClear" type="1" type_size="1" nature="2" inner="0" tooltip="" id="8" /></Box><Box name="Say" id="33" localization="8" tooltip="Say some text. The text can be localized." x="829" y="440"><bitmap>media/images/box/interaction/say.png</bitmap><script language="4"><content><![CDATA[import time
 
 class MyClass(GeneratedClass):
     def __init__(self):
