@@ -54,19 +54,19 @@
             memory.raiseEvent("stepFive", "step five is running");
         });
 
-        session.service("ALTextToSpeech").done(function (tts) {
-            tts.say("The “th” sound is used in words such as “three”, “toothpaste” and “both." +
-            "           We make the “th” sound by putting the tip of our tongue between our teeth like this.           " +
-            "           "+
-            "           th." +
-            "    Now its your turn. say.           " +
-            "           "+
-            "           th.");
-            // tts is a proxy to the ALTextToSpeech service
-            }).fail(function (error) {
-            console.log("An error occurred:", error);
-                //displayDiv2.textContent = "An error occurred ALTextToSpeech";
-            });
+        // session.service("ALTextToSpeech").done(function (tts) {
+        //     tts.say("The “th” sound is used in words such as “three”, “toothpaste” and “both." +
+        //     "           We make the “th” sound by putting the tip of our tongue between our teeth like this.           " +
+        //     "           "+
+        //     "           th." +
+        //     "    Now its your turn. say.           " +
+        //     "           "+
+        //     "           th.");
+        //     // tts is a proxy to the ALTextToSpeech service
+        //     }).fail(function (error) {
+        //     console.log("An error occurred:", error);
+        //         //displayDiv2.textContent = "An error occurred ALTextToSpeech";
+        //     });
 
 
     </script>
