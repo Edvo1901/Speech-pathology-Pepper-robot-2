@@ -104,7 +104,7 @@
             speechString = speechString[0];
 
             //if two letter is the same e.g. OO, it should just O in ALTextToSpeech
-            if(speechString[0] == speechString[1])
+            if(speechString[0] == speechString[1] && speechString != "OO")
             {
                 speechString = speechString[0];
             }
@@ -113,7 +113,7 @@
             console.log(speechString);
 
             session.service("ALTextToSpeech").done(function (tts) {
-            tts.say(speechString);
+            tts.say(speechString.toLowerCase());
             }).fail(function (error) {
             console.log("An error occurred:", error);
             });
