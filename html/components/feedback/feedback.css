@@ -1,0 +1,25 @@
+@import url("../../share.css");
+
+.feedback-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-image {
+    width: 200px;
+    height: auto;
+}
+
+.feedback-content {
+    justify-content: space-between;
+}
+
+.feedback-button {
+    position: relative;
+}
+
+.feedback-button button {
+    position: absolute;
+    left: 40%;
+}
