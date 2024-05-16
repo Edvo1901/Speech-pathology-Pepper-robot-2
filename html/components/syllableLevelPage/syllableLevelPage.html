@@ -16,39 +16,39 @@
             <div class="row">
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/EE.png" alt="Image 1" class="img-fluid" onClick="imageButton('e')">
+                        <img src="../../assets/EE.png" alt="Image 1" class="img-fluid" id="imageOne" onClick="imageButton('imageOne')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/AY.png" alt="Image 2" class="img-fluid" onClick="imageButton('a')">
+                        <img src="../../assets/AY.png" alt="Image 2" class="img-fluid" id="imageTwo" onClick="imageButton('imageTwo')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/OO.png" alt="Image 3" class="img-fluid" onClick="imageButton('oo')">
+                        <img src="../../assets/OO.png" alt="Image 3" class="img-fluid" id="imageThree" onClick="imageButton('imageThree')">
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OW.png" alt="Image 4" class="img-fluid" onClick="imageButton('ow')">
+                        <img src="../../assets/OW.png" alt="Image 4" class="img-fluid" id="imageFour" onClick="imageButton('imageFour')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OY.png" alt="Image 5" class="img-fluid" onClick="imageButton('oy')">
+                        <img src="../../assets/OY.png" alt="Image 5" class="img-fluid" id="imageFive" onClick="imageButton('imageFive')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/II.png" alt="Image 6" class="img-fluid" onClick="imageButton('i')">
+                        <img src="../../assets/II.png" alt="Image 6" class="img-fluid" id="imageSix" onClick="imageButton('imageSix')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OH.png" alt="Image 7" class="img-fluid" onClick="imageButton('oh')">
+                        <img src="../../assets/OH.png" alt="Image 7" class="img-fluid" id="imageSeven" onClick="imageButton('imageSeven')">
                     </button>
                 </div>
             </div>
@@ -96,8 +96,24 @@
 
         function imageButton(input)
         {
+            //delete unnessary string for the src string
+            var speechString = document.getElementById(input).src;   
+            speechString = speechString.split("/");
+            speechString = speechString[speechString.length - 1];
+            speechString = speechString.split(".");
+            speechString = speechString[0];
+
+            //if two letter is the same e.g. OO, it should just O in ALTextToSpeech
+            if(speechString[0] == speechString[1] && speechString != "OO")
+            {
+                speechString = speechString[0];
+            }
+
+            //FOR DEBUG
+            console.log(speechString);
+
             session.service("ALTextToSpeech").done(function (tts) {
-            tts.say(input);
+            tts.say(speechString.toLowerCase());
             }).fail(function (error) {
             console.log("An error occurred:", error);
             });

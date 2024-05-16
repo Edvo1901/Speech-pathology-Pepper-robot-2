@@ -45,14 +45,6 @@
             console.log("Session disconnected");
             displayDiv.textContent = "Session disconnected";
         }
-
-        session.service("ALTextToSpeech").done(function (tts) {
-                tts.say("testing connection from back end to front end");
-            // tts is a proxy to the ALTextToSpeech service
-            }).fail(function (error) {
-            console.log("An error occurred:", error);
-                //displayDiv2.textContent = "An error occurred ALTextToSpeech";
-            });
     </script>
 </body>
 </html>
