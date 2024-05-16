@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     $("#header-placeholder").load("../header/header.html");
-    
+
     document.getElementById('backToPreviousPage').addEventListener('click', function() {
         window.location.href = '../breakPage/movementBreak.html';
     });
@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextStep').addEventListener('click', function() {
-        window.location.href = './wordLevelPage.html';
+        window.location.href = '../feedback/feedback.html';
     });
 
     document.getElementById('initialPosition').addEventListener('click', function() {
