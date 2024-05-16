@@ -22,4 +22,5 @@
 .feedback-button button {
     position: absolute;
     left: 38%;
+    margin-top: 25vh;
 }
