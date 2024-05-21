@@ -5,29 +5,9 @@
         <BehaviorDescription name="behavior" src="behavior_1" xar="behavior.xar" />
     </BehaviorDescriptions>
     <Dialogs>
-        <Dialog name="ExampleDialog" src="behavior_1/ExampleDialog/ExampleDialog.dlg" />
         <Dialog name="voiceNav" src="voiceNav/voiceNav.dlg" />
     </Dialogs>
     <Resources>
-        <File name="thMouthShape" src="html/assets/thMouthShape.png" />
-        <File name="video-homepage" src="html/assets/video-homepage.mp4" />
-        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.css" />
-        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.html" />
-        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.js" />
-        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.css" />
-        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.html" />
-        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.js" />
-        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.css" />
-        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.html" />
-        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.js" />
-        <File name="thPage" src="html/components/thPage/thPage.css" />
-        <File name="thPage" src="html/components/thPage/thPage.html" />
-        <File name="thPage" src="html/components/thPage/thPage.js" />
-        <File name="index" src="html/index.css" />
-        <File name="index" src="html/index.html" />
-        <File name="index" src="html/index.js" />
-        <File name="robotutils" src="html/js/robotutils.js" />
-        <File name="dancing" src="html/assets/dancing.mp4" />
         <File name="fullscreen" src="ICT Prototype UI/fullscreen.html" />
         <File name="preview" src="ICT Prototype UI/preview.html" />
         <File name="readme" src="ICT Prototype UI/readme.txt" />
@@ -72,35 +52,66 @@
         <File name="player-export" src="ICT Prototype UI/src/stylesheets/player-export.css" />
         <File name="preview-export-min" src="ICT Prototype UI/src/stylesheets/preview-export-min.css" />
         <File name="preview-letterbox-min" src="ICT Prototype UI/src/stylesheets/preview-letterbox-min.css" />
-        <File name="header" src="html/assets/header.png" />
-        <File name="unisa" src="html/assets/unisa.svg" />
-        <File name="header" src="html/components/header/header.css" />
-        <File name="header" src="html/components/header/header.html" />
-        <File name="header" src="html/components/header/header.js" />
+        <File name="AY" src="html/assets/AY.png" />
+        <File name="EE" src="html/assets/EE.png" />
+        <File name="II" src="html/assets/II.png" />
+        <File name="OH" src="html/assets/OH.png" />
+        <File name="OO" src="html/assets/OO.png" />
+        <File name="OW" src="html/assets/OW.png" />
+        <File name="OY" src="html/assets/OY.png" />
+        <File name="PepperTest01" src="html/assets/PepperTest01.wav" />
+        <File name="Rating_face_1" src="html/assets/Rating_face_1.png" />
+        <File name="Rating_face_2" src="html/assets/Rating_face_2.png" />
+        <File name="Rating_face_3" src="html/assets/Rating_face_3.png" />
+        <File name="Rating_face_4" src="html/assets/Rating_face_4.png" />
+        <File name="Rating_face_5" src="html/assets/Rating_face_5.png" />
         <File name="ayImage" src="html/assets/ayImage.webp" />
         <File name="breakImage" src="html/assets/breakImage.png" />
+        <File name="dancing" src="html/assets/dancing.mp4" />
         <File name="eeImage" src="html/assets/eeImage.webp" />
         <File name="finalPosition" src="html/assets/finalPosition.webp" />
+        <File name="header" src="html/assets/header.png" />
         <File name="iiImage" src="html/assets/iiImage.webp" />
         <File name="initialPosition" src="html/assets/initialPosition.webp" />
+        <File name="medialPosition" src="html/assets/medialPosition.webp" />
         <File name="medicalPosition" src="html/assets/medicalPosition.webp" />
         <File name="ohImage" src="html/assets/ohImage.webp" />
         <File name="ooImage" src="html/assets/ooImage.webp" />
         <File name="owImage" src="html/assets/owImage.webp" />
         <File name="oyImage" src="html/assets/oyImage.webp" />
+        <File name="thMouthShape" src="html/assets/thMouthShape.png" />
+        <File name="unisa" src="html/assets/unisa.svg" />
+        <File name="video-homepage" src="html/assets/video-homepage.mp4" />
+        <File name="movementBreak" src="html/components/breakPage/movementBreak.css" />
         <File name="movementBreak" src="html/components/breakPage/movementBreak.html" />
         <File name="movementBreak" src="html/components/breakPage/movementBreak.js" />
         <File name="stretchBreak" src="html/components/breakPage/stretchBreak.css" />
         <File name="stretchBreak" src="html/components/breakPage/stretchBreak.html" />
         <File name="stretchBreak" src="html/components/breakPage/stretchBreak.js" />
+        <File name="feedback" src="html/components/feedback/feedback.css" />
+        <File name="feedback" src="html/components/feedback/feedback.html" />
+        <File name="feedback" src="html/components/feedback/feedback.js" />
+        <File name="header" src="html/components/header/header.css" />
+        <File name="header" src="html/components/header/header.html" />
+        <File name="header" src="html/components/header/header.js" />
+        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.css" />
+        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.html" />
+        <File name="isolationLevelPage" src="html/components/isolationLevelPage/isolationLevelPage.js" />
+        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.css" />
+        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.html" />
+        <File name="mouthShape" src="html/components/isolationLevelPage/mouthShape/mouthShape.js" />
+        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.css" />
+        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.html" />
+        <File name="lessonSelection" src="html/components/lessonSelection/lessonSelection.js" />
+        <File name="mouthShape" src="html/components/mouthShape/mouthShape.css" />
+        <File name="mouthShape" src="html/components/mouthShape/mouthShape.html" />
+        <File name="mouthShape" src="html/components/mouthShape/mouthShape.js" />
         <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.css" />
         <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.html" />
         <File name="syllableLevelPage" src="html/components/syllableLevelPage/syllableLevelPage.js" />
-        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.css" />
-        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.html" />
-        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.js" />
-        <File name="medialPosition" src="html/assets/medialPosition.webp" />
-        <File name="movementBreak" src="html/components/breakPage/movementBreak.css" />
+        <File name="thPage" src="html/components/thPage/thPage.css" />
+        <File name="thPage" src="html/components/thPage/thPage.html" />
+        <File name="thPage" src="html/components/thPage/thPage.js" />
         <File name="finalPosition" src="html/components/wordLevelPage/final/finalPosition.css" />
         <File name="finalPosition" src="html/components/wordLevelPage/final/finalPosition.html" />
         <File name="finalPosition" src="html/components/wordLevelPage/final/finalPosition.js" />
@@ -110,22 +121,17 @@
         <File name="medialPosition" src="html/components/wordLevelPage/medial/medialPosition.css" />
         <File name="medialPosition" src="html/components/wordLevelPage/medial/medialPosition.html" />
         <File name="medialPosition" src="html/components/wordLevelPage/medial/medialPosition.js" />
-        <File name="share" src="html/share.css" />
-        <File name="mouthShape" src="html/components/mouthShape/mouthShape.css" />
-        <File name="mouthShape" src="html/components/mouthShape/mouthShape.html" />
-        <File name="mouthShape" src="html/components/mouthShape/mouthShape.js" />
-        <File name="AY" src="html/assets/AY.png" />
-        <File name="EE" src="html/assets/EE.png" />
-        <File name="II" src="html/assets/II.png" />
-        <File name="OH" src="html/assets/OH.png" />
-        <File name="OO" src="html/assets/OO.png" />
-        <File name="OW" src="html/assets/OW.png" />
-        <File name="OY" src="html/assets/OY.png" />
-        <File name="feedback" src="html/components/feedback/feedback.css" />
-        <File name="feedback" src="html/components/feedback/feedback.html" />
-        <File name="feedback" src="html/components/feedback/feedback.js" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.css" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.html" />
+        <File name="wordLevelPage" src="html/components/wordLevelPage/wordLevelPage.js" />
+        <File name="index" src="html/index.css" />
+        <File name="index" src="html/index.html" />
+        <File name="index" src="html/index.js" />
         <File name="importHeader" src="html/js/importHeader.js" />
-        <File name="PepperTest01" src="html/assets/PepperTest01.wav" />
+        <File name="robotutils" src="html/js/robotutils.js" />
+        <File name="share" src="html/share.css" />
+        <File name="thSound" src="html/assets/thSound.wav" />
+        <File name="Music break music" src="html/assets/Music break music.wav" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
