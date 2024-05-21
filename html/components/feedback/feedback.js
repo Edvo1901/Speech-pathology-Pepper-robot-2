@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    const correctPassword = 'yourPassword'; // Set your password here
+    const correctPassword = '123456'; // Set your password here
 
     $('#sendButton').click(function() {
         $('#passwordModal').css('display', 'block');
