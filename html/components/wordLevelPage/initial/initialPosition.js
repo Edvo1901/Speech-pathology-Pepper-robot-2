@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 buttons[i].innerHTML = words[i];
                 buttons[i].addEventListener('click', function() {
                     cardTitle.innerHTML = this.innerHTML;
+                    this.disabled = true;
                 });
             }
         }
