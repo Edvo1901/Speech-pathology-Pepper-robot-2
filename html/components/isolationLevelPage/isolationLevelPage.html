@@ -44,6 +44,9 @@
 
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
+            fileId = aup.post.playFile("../../assets/PepperTest01.wav");
+            ap.loadSoundSet("Aldebaran");
+            fileId = ap.post.playSoundSetFile("PepperTest01");
         }
         function disconnected(error) {
             console.log("Session disconnected");
@@ -53,6 +56,8 @@
             //this dont work, research more
             memory.raiseEvent("stepFive", "step five is running");
         });
+
+        
 
         // session.service("ALTextToSpeech").done(function (tts) {
         //     tts.say("The “th” sound is used in words such as “three”, “toothpaste” and “both." +

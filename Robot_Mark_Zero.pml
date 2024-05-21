@@ -121,6 +121,11 @@
         <File name="OO" src="html/assets/OO.png" />
         <File name="OW" src="html/assets/OW.png" />
         <File name="OY" src="html/assets/OY.png" />
+        <File name="feedback" src="html/components/feedback/feedback.css" />
+        <File name="feedback" src="html/components/feedback/feedback.html" />
+        <File name="feedback" src="html/components/feedback/feedback.js" />
+        <File name="importHeader" src="html/js/importHeader.js" />
+        <File name="PepperTest01" src="html/assets/PepperTest01.wav" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
