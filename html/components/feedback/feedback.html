@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,9 +30,50 @@
         </div>
     </div>
     <div class="feedback-button">
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-primary" id="sendButton">Send</button>
     </div>
+
+    <!-- Custom Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5 class="modal-title">Enter Password</h5>
+            <input type="password" id="passwordInput" class="form-control" placeholder="Enter your password">
+            <button type="button" class="btn btn-primary" id="submitPassword">Submit</button>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="../../js/importHeader.js"></script>
+    <script>
+        $(document).ready(function() {
+            const correctPassword = 'yourPassword'; // Set your password here
+
+            $('#sendButton').click(function() {
+                $('#passwordModal').css('display', 'block');
+            });
+
+            $('.close').click(function() {
+                $('#passwordModal').css('display', 'none');
+            });
+
+            $(window).click(function(event) {
+                if (event.target.id === 'passwordModal') {
+                    $('#passwordModal').css('display', 'none');
+                }
+            });
+
+            $('#submitPassword').click(function() {
+                const enteredPassword = $('#passwordInput').val();
+                if (enteredPassword === correctPassword) {
+                    alert('Password correct. Form submitted.');
+                    $('#passwordModal').css('display', 'none');
+                    // Place your form submission logic here
+                } else {
+                    alert('Incorrect password. Please try again.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
