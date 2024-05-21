@@ -56,7 +56,7 @@
                 <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
                 <button type="button" class="btn btn-primary" id="nextStep">Next</button>
                 <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
-                <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+                <button type="button" class="btn btn-primary" id="jumpToFeedbackFinish</button>
             </div>
         </div>
     </div>
@@ -97,7 +97,7 @@
         function imageButton(input)
         {
             //delete unnessary string for the src string
-            var speechString = document.getElementById(input).src;   
+            var speechString = document.getElementById(input).src;
             speechString = speechString.split("/");
             speechString = speechString[speechString.length - 1];
             speechString = speechString.split(".");

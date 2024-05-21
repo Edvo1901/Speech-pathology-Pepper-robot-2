@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = '../medial/medialPosition.html';
     });
 
+    document.getElementById('jumpToFeedback').addEventListener('click', function() {
+        window.location.href = '../../feedback/feedback.html';
+    });
+
     // List of words or phrases to choose from
     var words = [
         '<u>Th</u>ree',

@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextStep').addEventListener('click', function() {
-        window.location.href = './finalPosition.html';
+        window.location.href = '../../feedback/feedback.html';
+    });
+
+    document.getElementById('jumpToFeedback').addEventListener('click', function() {
+        window.location.href = '../../feedback/feedback.html';
     });
 
     // List of words or phrases to choose from
