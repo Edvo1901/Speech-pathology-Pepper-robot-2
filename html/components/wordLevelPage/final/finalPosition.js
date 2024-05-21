@@ -55,12 +55,16 @@ document.addEventListener('DOMContentLoaded', function() {
     shuffle(words);
 
     var buttons = document.querySelectorAll('.word-button');
+    var cardTitle = document.querySelector('.card-title');
 
     // Assign a random word from the array to each button
     if (buttons.length > 0) {
         for (var i = 0; i < buttons.length; i++) {
             if (i < words.length) {
                 buttons[i].innerHTML = words[i];
+                buttons[i].addEventListener('click', function() {
+                    cardTitle.innerHTML = this.innerHTML;
+                });
             }
         }
     }
