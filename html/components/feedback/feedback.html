@@ -65,14 +65,14 @@
             emailjs.init("C23If__KQRFS7qbwo"); //please encrypted user id for malicious attacks
             })();
             var templateParams = {
-                sent_email: 'xyz',
+                sent_email: 'leunghoihang@gmail.com',
                 from_date: '2024-05-22',
                 to_name: 'Hoi',
                 from_name: 'Gordon',
                 message:'testing sending email',
             };
         
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('pepperFeedbackEmail', 'template_ik4347p', templateParams)
             .then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
             }, function(error) {
