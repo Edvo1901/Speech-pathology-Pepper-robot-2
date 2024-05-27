@@ -17,6 +17,7 @@ function getCurrentDate() {
 
 // Function to send feedback and store it in local storage
 function sendFeedback(feedbackType) {
+    alert("me")
     // Retrieve the current feedback data from local storage
     var feedbackData = localStorage.getItem("feedbackData");
 
@@ -37,7 +38,6 @@ function sendFeedback(feedbackType) {
 
 // Function to send an email with feedback data
 function sendEmail(enteredEmail) {
-    alert("testing")
 	// Retrieve feedback data from local storage
 	var feedbackData = localStorage.getItem("feedbackData");
 	feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
