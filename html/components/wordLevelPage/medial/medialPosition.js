@@ -82,21 +82,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     cardTitle.innerHTML = this.innerHTML;
                     this.disabled = true;
 
-                    var session = new QiSession(function () {
-                        session = s;
-                    }, disconnected,location.host);
-                
-                    function connected(s) {
-                        //If you want to subscribe so some events (to send info pepper->tablet) call the function here
-                    }
+                    // session.service("ALTextToSpeech").done(function (memory) {
+                    //     memory.raiseEvent("Word", cardTitle);
+                    // });
 
-                    function disconnected(error) {
-                        console.log("Session disconnected");
-                    }
-                    
-                    session.service("ALMemory").done(function (memory) {
-                        memory.raiseEvent("Word", cardTitle);
-                    });
+
+                    session.service("ALTextToSpeech").done(function (tts) {
+                        tts.say(cardTitle);
+                        }).fail(function (error) {
+                        console.log("An error occurred:", error);
+                        });
+
+
                 });
             }
         }
