@@ -45,7 +45,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="../../js/importHeader.js"></script>
     <script src="./feedback.js"></script>
-
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js"></script>
@@ -71,7 +70,7 @@
                 from_name: 'Gordon',
                 message:'testing sending email',
             };
-        
+
             emailjs.send('pepperFeedbackEmail', 'template_ik4347p', templateParams)
             .then(function(response) {
                 console.log('SUCCESS!', response.status, response.text);
@@ -79,7 +78,7 @@
                 console.log('FAILED...', error);
             });
         }
-        
+
 
         var session = new QiSession(function () {
             session = s;
