@@ -81,6 +81,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 buttons[i].addEventListener('click', function() {
                     cardTitle.innerHTML = this.innerHTML;
                     this.disabled = true;
+
+                    var session = new QiSession(function () {
+                        session = s;
+                    }, disconnected,location.host);
+                
+                    function connected(s) {
+                        //If you want to subscribe so some events (to send info pepper->tablet) call the function here
+                    }
+
+                    function disconnected(error) {
+                        console.log("Session disconnected");
+                    }
+                    
                     session.service("ALMemory").done(function (memory) {
                         memory.raiseEvent("Word", cardTitle);
                     });
