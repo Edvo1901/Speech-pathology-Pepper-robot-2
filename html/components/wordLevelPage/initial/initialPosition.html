@@ -13,11 +13,11 @@
         <div class="row justify-content-between align-items-center">
             <div class="col d-flex justify-content-start">
                 <div class="button-column">
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>ree</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>ick</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>row</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>eatre</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>ursday</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord01" onClick="readTextOnButton(this)"><u>Th</u>ree</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord02" onClick="readTextOnButton(this)"><u>Th</u>ick</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord03" onClick="readTextOnButton(this)"><u>Th</u>row</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord04" onClick="readTextOnButton(this)"><u>Th</u>eatre</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord05" onClick="readTextOnButton(this)"><u>Th</u>ursday</button>
                 </div>
             </div>
             <div class="col-auto">
@@ -25,11 +25,11 @@
             </div>
             <div class="col d-flex justify-content-end">
                 <div class="button-column">
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>irsty</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>eir</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>ermometer</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>read</button>
-                    <button type="button" class="btn btn-primary mb-2 word-button"><u>Th</u>ank you</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord06" onClick="readTextOnButton(this)"><u>Th</u>irsty</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord07" onClick="readTextOnButton(this)"><u>Th</u>eir</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord08" onClick="readTextOnButton(this)"><u>Th</u>ermometer</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord09" onClick="readTextOnButton(this)"><u>Th</u>read</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="iWord10" onClick="readTextOnButton(this)"><u>Th</u>ank you</button>
                 </div>
             </div>
         </div>
@@ -69,6 +69,21 @@
 
             memory.raiseEvent("stepEleven", "step eleven is running");
         });
+
+        function readTextOnButton(button)
+        {
+            var bracketSwitchBegin = 0; 
+            var readString = document.getElementById(button.id).innerHTML.toString();
+            readString = readString.replace("<u>","");
+            readString = readString.replace("</u>","");  
+            console.log(readString);
+
+            session.service("ALTextToSpeech").done(function (tts) {
+            tts.say(readString);
+            }).fail(function (error) {
+            console.log("An error occurred:", error);
+            });
+        }
     </script>
 
 </body>
