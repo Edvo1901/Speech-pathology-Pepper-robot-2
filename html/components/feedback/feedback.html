@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="feedback.css"/>
+    <link rel="stylesheet" href="feedback.css" />
 </head>
+
 <body>
     <div id="header-placeholder"></div>
     <div class="d-flex justify-content-center align-items-center" style="margin-top: 5vh">
@@ -30,6 +32,7 @@
         </div>
     </div>
     <div class="feedback-button">
+        <button class="btn btn-primary" id="homeButton">Home</button>
         <button class="btn btn-primary" id="sendButton" onClick="sendEmail()">Send</button>
     </div>
 
@@ -52,50 +55,49 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script type="text/javascript">
+        // function sendEmail() {
+        //     (function () {
+        //         emailjs.init("C23If__KQRFS7qbwo"); //please encrypted user id for malicious attacks
+        //     })();
+        //     var templateParams = {
+        //         sent_email: 'leunghoihang@gmail.com',
+        //         from_date: '2024-05-22',
+        //         to_name: 'Hoi',
+        //         from_name: 'Gordon',
+        //         message: 'testing sending email',
+        //     };
 
-        function sendEmail()
-        {
-            (function() {
-            emailjs.init("C23If__KQRFS7qbwo"); //please encrypted user id for malicious attacks
-            })();
-            var templateParams = {
-                sent_email: 'leunghoihang@gmail.com',
-                from_date: '2024-05-22',
-                to_name: 'Hoi',
-                from_name: 'Gordon',
-                message:'testing sending email',
-            };
-
-            emailjs.send('pepperFeedbackEmail', 'template_ik4347p', templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function(error) {
-                console.log('FAILED...', error);
-            });
-        }
-
+        //     emailjs.send('pepperFeedbackEmail', 'template_ik4347p', templateParams)
+        //         .then(function (response) {
+        //             console.log('SUCCESS!', response.status, response.text);
+        //         }, function (error) {
+        //             console.log('FAILED...', error);
+        //         });
+        // }
 
         var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
         }
         function disconnected(error) {
             console.log("Session disconnected");
-       }
+        }
 
         session.service("ALMemory").done(function (memory) {
-
             //this dont work, research more
             memory.raiseEvent("feedback", "feedback page is running");
         });
     </script>
 </body>
+
 </html>

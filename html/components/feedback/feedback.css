@@ -1,3 +1,4 @@
+
 @import url("../../share.css");
 
 .feedback-container {
@@ -16,12 +17,9 @@
 }
 
 .feedback-button {
-    position: relative;
-}
-
-.feedback-button button {
-    position: absolute;
-    left: 39%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     margin-top: 5vh;
 }
 
