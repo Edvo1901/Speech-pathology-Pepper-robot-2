@@ -171,12 +171,16 @@
                 }
             });
         });
-
+    </script>
+    <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("homeButton").addEventListener("click", function () {
                 window.location.href = "../lessonSelection/lessonSelection.html";
             });
-
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
             document.querySelectorAll(".feedback-image").forEach((image) => {
                 image.addEventListener("click", function () {
                     const feedbackType = this.alt;
@@ -184,6 +188,7 @@
                 });
             });
         });
+
     </script>
 </body>
 
