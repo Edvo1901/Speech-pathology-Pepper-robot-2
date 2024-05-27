@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".feedback-image").forEach((image) => {
+		image.addEventListener("click", function () {
+			var feedbackType = this.alt;
+			sendFeedback(feedbackType);
+		});
+	});
+});
+
 function getCurrentDate() {
     var date = new Date();
     var day = String(date.getDate()).padStart(2, "0");
@@ -8,7 +17,6 @@ function getCurrentDate() {
 
 // Function to send feedback and store it in local storage
 function sendFeedback(feedbackType) {
-    alert("Got me")
     // Retrieve the current feedback data from local storage
     var feedbackData = localStorage.getItem("feedbackData");
 
@@ -29,6 +37,7 @@ function sendFeedback(feedbackType) {
 
 // Function to send an email with feedback data
 function sendEmail(enteredEmail) {
+    alert("testing")
 	// Retrieve feedback data from local storage
 	var feedbackData = localStorage.getItem("feedbackData");
 	feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
