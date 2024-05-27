@@ -10,7 +10,7 @@ function getCurrentDate() {
 function sendFeedback(feedbackType) {
     // Retrieve the current feedback data from local storage
     let feedbackData = localStorage.getItem("feedbackData");
-
+    alert("test here")
     // Get data if the local storage has data. Otherwise, create a new one
     feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
@@ -22,9 +22,10 @@ function sendFeedback(feedbackType) {
         // If it does not exist, initialise the count to 1
         feedbackData[feedbackType] = 1;
     }
-
+    alert("before save")
     // Save the updated feedback data back to local storage
     localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+    alert("saved")
 }
 
 // Function to send an email with feedback data
