@@ -128,7 +128,25 @@
                 }
             );
         }
-
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("homeButton").addEventListener("click", function () {
+                window.location.href = "../lessonSelection/lessonSelection.html";
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".feedback-image").forEach((image) => {
+                image.addEventListener("click", function () {
+                    const feedbackType = this.alt;
+                    sendFeedback(feedbackType);
+                });
+            });
+        });
+    </script>
+    <script>
         $(document).ready(function () {
             var correctPassword = "123456"; // Set your password here
 
@@ -171,24 +189,6 @@
                 }
             });
         });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("homeButton").addEventListener("click", function () {
-                window.location.href = "../lessonSelection/lessonSelection.html";
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".feedback-image").forEach((image) => {
-                image.addEventListener("click", function () {
-                    const feedbackType = this.alt;
-                    sendFeedback(feedbackType);
-                });
-            });
-        });
-
     </script>
 </body>
 
