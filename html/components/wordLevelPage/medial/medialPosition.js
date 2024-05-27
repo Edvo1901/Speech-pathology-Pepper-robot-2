@@ -62,18 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var cardTitle = document.querySelector('.card-title');
 
     // Assign a random word from the array to each button
-
-    var session = new QiSession(function () {
-        session = s;
-    }, disconnected,location.host);
-
-    function connected(s) {
-        //If you want to subscribe so some events (to send info pepper->tablet) call the function here
-    }
-    function disconnected(error) {
-        console.log("Session disconnected");
-    }
-
     if (buttons.length > 0) {
         for (var i = 0; i < buttons.length; i++) {
             if (i < words.length) {
@@ -81,19 +69,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 buttons[i].addEventListener('click', function() {
                     cardTitle.innerHTML = this.innerHTML;
                     this.disabled = true;
-
-                    // session.service("ALTextToSpeech").done(function (memory) {
-                    //     memory.raiseEvent("Word", cardTitle);
-                    // });
-
-
-                    session.service("ALTextToSpeech").done(function (tts) {
-                        tts.say(cardTitle);
-                        }).fail(function (error) {
-                        console.log("An error occurred:", error);
-                        });
-
-
                 });
             }
         }

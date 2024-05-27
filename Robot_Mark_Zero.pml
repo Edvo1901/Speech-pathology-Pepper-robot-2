@@ -132,6 +132,7 @@
         <File name="share" src="html/share.css" />
         <File name="thSound" src="html/assets/thSound.wav" />
         <File name="Music break music" src="html/assets/Music break music.wav" />
+        <File name="emailFeedback" src="html/components/feedback/emailFeedback.js" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
