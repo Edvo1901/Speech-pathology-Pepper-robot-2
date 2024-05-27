@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function () {
+	document
+		.getElementById("homeButton")
+		.addEventListener("click", function () {
+			window.location.href = "../lessonSelection/lessonSelection.html";
+		});
+
+	document.querySelectorAll(".feedback-image").forEach((image) => {
+		image.addEventListener("click", function () {
+			var feedbackType = this.alt;
+			sendFeedback(feedbackType);
+		});
+	});
+});
+
 function getCurrentDate() {
     var date = new Date();
     var day = String(date.getDate()).padStart(2, "0");
@@ -10,7 +25,7 @@ function getCurrentDate() {
 function sendFeedback(feedbackType) {
     // Retrieve the current feedback data from local storage
     var feedbackData = localStorage.getItem("feedbackData");
-    alert("test here")
+
     // Get data if the local storage has data. Otherwise, create a new one
     feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
@@ -100,17 +115,4 @@ $(document).ready(function () {
 	});
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-	document
-		.getElementById("homeButton")
-		.addEventListener("click", function () {
-			window.location.href = "../lessonSelection/lessonSelection.html";
-		});
 
-	document.querySelectorAll(".feedback-image").forEach((image) => {
-		image.addEventListener("click", function () {
-			var feedbackType = this.alt;
-			sendFeedback(feedbackType);
-		});
-	});
-});
