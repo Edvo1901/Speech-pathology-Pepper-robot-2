@@ -14,26 +14,26 @@
         <div class="card blur-card text-center">
             <div class="card-body feedback-container">
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_1.png" alt="ratingFace1" class="feedback-image">
+                    <img src="../../assets/Rating_face_1.png" alt="Dissatisfy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_2.png" alt="ratingFace2" class="feedback-image">
+                    <img src="../../assets/Rating_face_2.png" alt="Unhappy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_3.png" alt="ratingFace3" class="feedback-image">
+                    <img src="../../assets/Rating_face_3.png" alt="Neutral" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_4.png" alt="ratingFace4" class="feedback-image">
+                    <img src="../../assets/Rating_face_4.png" alt="Happy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_5.png" alt="ratingFace5" class="feedback-image">
+                    <img src="../../assets/Rating_face_5.png" alt="Exceptional" class="feedback-image">
                 </div>
             </div>
         </div>
     </div>
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
-        <button class="btn btn-primary" id="sendButton" onClick="sendEmail()">Send</button>
+        <button class="btn btn-primary" id="sendButton">Send</button>
     </div>
 
     <div id="passwordModal" class="modal">
@@ -42,6 +42,15 @@
             <h5 class="modal-title">Enter Password</h5>
             <input type="password" id="passwordInput" class="form-control" placeholder="Enter your password">
             <button type="button" class="btn btn-primary submit-button" id="submitPassword">Submit</button>
+        </div>
+    </div>
+
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h5 class="modal-title">Enter email</h5>
+            <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
+            <button type="button" class="btn btn-primary submit-button" id="submitEmail">Submit</button>
         </div>
     </div>
 
@@ -62,26 +71,6 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script type="text/javascript">
-        // function sendEmail() {
-        //     (function () {
-        //         emailjs.init("C23If__KQRFS7qbwo"); //please encrypted user id for malicious attacks
-        //     })();
-        //     var templateParams = {
-        //         sent_email: 'leunghoihang@gmail.com',
-        //         from_date: '2024-05-22',
-        //         to_name: 'Hoi',
-        //         from_name: 'Gordon',
-        //         message: 'testing sending email',
-        //     };
-
-        //     emailjs.send('pepperFeedbackEmail', 'template_ik4347p', templateParams)
-        //         .then(function (response) {
-        //             console.log('SUCCESS!', response.status, response.text);
-        //         }, function (error) {
-        //             console.log('FAILED...', error);
-        //         });
-        // }
-
         var session = new QiSession(function () {
             session = s;
         }, disconnected, location.host);
