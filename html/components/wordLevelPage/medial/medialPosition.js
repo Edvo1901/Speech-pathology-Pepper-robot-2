@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var words = [
         'Bir<u>th</u>day',
         'Too<u>th</u>brush',
-        'Bath<u>th</u>room',
+        'Ba<u>th</u>room',
         'Fea<u>th</u>er',
         'Ba<u>th</u>ers',
         'Mou<u>th</u>wash',
