@@ -81,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 buttons[i].addEventListener('click', function() {
                     cardTitle.innerHTML = this.innerHTML;
                     this.disabled = true;
-                    session.service("ALTextToSpeech").done(function (tts) {
-                        tts.say(cardTitle);
+                    session.service("ALMemory").done(function (memory) {
+                        memory.raiseEvent("Word", cardTitle);
                     });
                 });
             }
