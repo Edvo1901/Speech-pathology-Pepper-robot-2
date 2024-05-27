@@ -1,15 +1,15 @@
 function getCurrentDate() {
-    const date = new Date();
-    const day = String(date.getDate()).padStart(2, "0");
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const year = date.getFullYear();
+    var date = new Date();
+    var day = String(date.getDate()).padStart(2, "0");
+    var month = String(date.getMonth() + 1).padStart(2, "0");
+    var year = date.getFullYear();
     return `${day}-${month}-${year}`;
 }
 
 // Function to send feedback and store it in local storage
 function sendFeedback(feedbackType) {
     // Retrieve the current feedback data from local storage
-    let feedbackData = localStorage.getItem("feedbackData");
+    var feedbackData = localStorage.getItem("feedbackData");
     alert("test here")
     // Get data if the local storage has data. Otherwise, create a new one
     feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
@@ -22,26 +22,24 @@ function sendFeedback(feedbackType) {
         // If it does not exist, initialise the count to 1
         feedbackData[feedbackType] = 1;
     }
-    alert("before save")
     // Save the updated feedback data back to local storage
     localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
-    alert("saved")
 }
 
 // Function to send an email with feedback data
 function sendEmail(enteredEmail) {
 	// Retrieve feedback data from local storage
-	let feedbackData = localStorage.getItem("feedbackData");
+	var feedbackData = localStorage.getItem("feedbackData");
 	feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
 	// Convert feedback data to a readable format
-	let feedbackText = "";
-	for (const [key, value] of Object.entries(feedbackData)) {
+	var feedbackText = "";
+	for (var [key, value] of Object.entries(feedbackData)) {
 		feedbackText += `${key}: ${value}\n`;
 	}
 
     // Email template
-	const templateParams = {
+	var templateParams = {
 		sendEmail: enteredEmail,
 		date: getCurrentDate(),
 		message: `Feedback data:\n\n${feedbackText}`,
@@ -60,7 +58,7 @@ function sendEmail(enteredEmail) {
 }
 
 $(document).ready(function () {
-	const correctPassword = "123456"; // Set your password here
+	var correctPassword = "123456"; // Set your password here
 
 	$("#sendButton").click(function () {
 		$("#passwordModal").css("display", "block");
@@ -78,7 +76,7 @@ $(document).ready(function () {
 	});
 
 	$("#submitPassword").click(function () {
-		const enteredPassword = $("#passwordInput").val();
+		var enteredPassword = $("#passwordInput").val();
 		if (enteredPassword === correctPassword) {
 			$("#passwordModal").css("display", "none");
             $("#emailModal").css("display", "block");
@@ -88,7 +86,7 @@ $(document).ready(function () {
 	});
 
     $("#submitEmail").click(function () {
-        const enteredEmail = $("#emailInput").val();
+        var enteredEmail = $("#emailInput").val();
 
         if (enteredEmail) {
             $("#passwordModal").css("display", "none");
@@ -111,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	document.querySelectorAll(".feedback-image").forEach((image) => {
 		image.addEventListener("click", function () {
-			const feedbackType = this.alt;
+			var feedbackType = this.alt;
 			sendFeedback(feedbackType);
 		});
 	});
