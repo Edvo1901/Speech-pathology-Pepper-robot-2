@@ -28,11 +28,11 @@ function sendEmail(enteredEmail) {
 	emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
 		function (response) {
 			//console.log("SUCCESS!", response.status, response.text);
-            alert("Email sent!")
+            //alert("Email sent!")
 		},
 		function (error) {
 			//console.log("FAILED...", error);
-            alert("Something went wrong!!")
+            //alert("Something went wrong!!")
 		}
 	);
 }
