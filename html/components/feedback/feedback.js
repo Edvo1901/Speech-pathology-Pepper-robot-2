@@ -1,12 +1,3 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".feedback-image").forEach((image) => {
-		image.addEventListener("click", function () {
-			var feedbackType = this.alt;
-			sendFeedback(feedbackType);
-		});
-	});
-});
-
 function getCurrentDate() {
     var date = new Date();
     var day = String(date.getDate()).padStart(2, "0");
@@ -17,7 +8,6 @@ function getCurrentDate() {
 
 // Function to send feedback and store it in local storage
 function sendFeedback(feedbackType) {
-    alert("me")
     // Retrieve the current feedback data from local storage
     var feedbackData = localStorage.getItem("feedbackData");
 
@@ -67,47 +57,6 @@ function sendEmail(enteredEmail) {
 	);
 }
 
-$(document).ready(function () {
-	var correctPassword = "123456"; // Set your password here
 
-	$("#sendButton").click(function () {
-		$("#passwordModal").css("display", "block");
-	});
-
-	$(".close").click(function () {
-		$("#passwordModal").css("display", "none");
-        $("#emailModal").css("display", "none");
-	});
-
-	$(window).click(function (event) {
-		if (event.target.id === "passwordModal") {
-			$("#passwordModal").css("display", "none");
-		}
-	});
-
-	$("#submitPassword").click(function () {
-		var enteredPassword = $("#passwordInput").val();
-		if (enteredPassword === correctPassword) {
-			$("#passwordModal").css("display", "none");
-            $("#emailModal").css("display", "block");
-		} else {
-			alert("Incorrect password. Please try again.");
-		}
-	});
-
-    $("#submitEmail").click(function () {
-        var enteredEmail = $("#emailInput").val();
-
-        if (enteredEmail) {
-            $("#passwordModal").css("display", "none");
-            $("#emailModal").css("display", "none");
-            // Initialising EmailJS
-            emailjs.init("C23If__KQRFS7qbwo");
-            sendEmail(enteredEmail);
-        } else {
-            alert("Enter an email!")
-        }
-	});
-});
 
 
