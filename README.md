@@ -8,7 +8,7 @@
 <h3 align="center">Speech pathology Pepper robot</h3>
 
   <p align="center">
-    project_description
+    Elizabeth UniSA Health and Medical center's Speech pathology therapy services Pepper Robot implementation project
   </p>
 </div>
 
