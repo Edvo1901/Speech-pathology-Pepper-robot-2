@@ -23,5 +23,5 @@ u:([~lookChat e:input_lookChat]) $output_lookChat=1 Because I have eyes.
 
 # Daily conversation
 u:([~responseUOne e:input_responseUOne]) $output_responseUOne=1 Good to hear about it.
-u:([~questionUOne e:input_questionUOne]) $output_questionUOne=1 I am doing really well. Quite a good day for me today, hope you are same.
+u:([~questionUOne e:input_questionUOne]) $output_questionUOne=1 I am doing really well. Quite a good day for me today, hope you are doing same.
 

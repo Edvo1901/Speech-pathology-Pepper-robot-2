@@ -1,11 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <package uuid="robot_mark_zero-f2ab55" version="0.0.0">
  <names>
-  <name lang="en_US">Robot_Mark_Zero</name>
+  <name lang="en_US">Pepper Speech therapy</name>
  </names>
- <supportedLanguages>
-  <language>en_US</language>
- </supportedLanguages>
  <descriptionLanguages>
   <language>en_US</language>
  </descriptionLanguages>
@@ -16,4 +13,8 @@
    <permissions/>
   </behaviorContent>
  </contents>
+ <requirements>
+  <naoqiRequirement minVersion="2.5" maxVersion="2.5"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
 </package>
