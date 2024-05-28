@@ -65,10 +65,9 @@
             console.log("Session disconnected");
         }
 
-        session.service("ALMemory").done(function (memory) {
+        
 
-            memory.raiseEvent("stepEleven", true);
-        });
+        var button = 0;
 
         function readTextOnButton(button)
         {
@@ -77,6 +76,15 @@
             readString = readString.replace("<u>","");
             readString = readString.replace("</u>","");
             console.log(readString);
+
+            button++;
+            if(button >= 10)
+            {
+                session.service("ALMemory").done(function (memory) {
+
+                    memory.raiseEvent("stepEleven", true);
+                    });
+            }
 
             session.service("ALTextToSpeech").done(function (tts) {
             tts.say(readString);
