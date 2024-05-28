@@ -42,6 +42,8 @@
         <button class="btn btn-primary" id="exitButton">Exit</button>
     </div>
 
+    <div id="testing">Test</div>
+
     <div id="passwordModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -123,9 +125,11 @@
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
                 function (response) {
                     //console.log("SUCCESS!", response.status, response.text);
+                    document.getElementById("testing").innerHTML = response.text
                 },
                 function (error) {
                     //console.log("FAILED...", error);
+                    document.getElementById("testing").innerHTML = error
                 }
             );
         }
