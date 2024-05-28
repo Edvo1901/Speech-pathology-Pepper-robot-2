@@ -38,7 +38,7 @@
     </div>
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
-        <button class="btn btn-primary" id="sendButton" onClick="sendEmail()">Send</button>
+        <button class="btn btn-primary" id="sendButton" onClick="sendEmail('test')">Send</button>
         <button class="btn btn-primary" id="exitButton">Exit</button>
     </div>
 
@@ -98,14 +98,7 @@
                 message: feedbackText,
             };
 
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
-                function (response) {
-                    document.getElementById("testing").innerHTML = response.text
-                },
-                function (error) {
-                    document.getElementById("testing").innerHTML = error
-                }
-            );
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams)
         }
     </script>
     <script>
