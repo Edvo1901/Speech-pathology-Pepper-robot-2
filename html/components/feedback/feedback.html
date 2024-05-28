@@ -95,17 +95,22 @@
             // console.log("Feedback recorded:", feedbackData);
         }
 
-        // Function to get the current date in dd-mm-yyyy format
-        function getCurrentDate() {
+
+    </script>
+    <script>
+                // Function to get the current date in dd-mm-yyyy format
+                function getCurrentDate() {
             const date = new Date();
             const day = String(date.getDate()).padStart(2, '0');
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const year = date.getFullYear();
             return `${day}-${month}-${year}`;
         }
-
+    </script>
+    <script>
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
+            document.getElementById("testing").innerHTML = "Get to function"
             // // Retrieve feedback data from local storage
             // let feedbackData = localStorage.getItem("feedbackData");
             // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
