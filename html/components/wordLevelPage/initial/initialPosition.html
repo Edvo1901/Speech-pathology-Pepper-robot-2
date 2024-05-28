@@ -84,6 +84,12 @@
 
             if(buttonCount >= 10)
             {
+                session.service("ALTextToSpeech").done(function (tts) {
+                    tts.say(readString);
+                }).fail(function (error) {
+                console.log("An error occurred:", error);
+                });
+
                 session.service("ALMemory").done(function (memory) {
 
                     memory.raiseEvent("stepEleven", "all button pressed");
@@ -92,13 +98,15 @@
             else
             {
                 localStorage.setItem("buttonCount", buttonCount);
+
+                session.service("ALTextToSpeech").done(function (tts) {
+                tts.say(readString);
+                }).fail(function (error) {
+                console.log("An error occurred:", error);
+                });
             }
 
-            session.service("ALTextToSpeech").done(function (tts) {
-            tts.say(readString);
-            }).fail(function (error) {
-            console.log("An error occurred:", error);
-            });
+            
         }
     </script>
 
