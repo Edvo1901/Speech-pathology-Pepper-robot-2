@@ -83,17 +83,17 @@
         function sendEmail(recipientEmail) {
             document.getElementById("testing").innerHTML = "Get to function"
             // Retrieve feedback data from local storage
-            let feedbackData = localStorage.getItem("feedbackData");
+            var feedbackData = localStorage.getItem("feedbackData");
             feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
             // Convert feedback data to a readable format
-            let feedbackText = "";
+            var feedbackText = "";
             for (const [key, value] of Object.entries(feedbackData)) {
                 feedbackText += `${key}: ${value}\n`;
             }
 
             var templateParams = {
-                sendEmail: recipientEmail,
+                sendEmail: "leunghoihang@gmail.com",
                 date: getCurrentDate(),
                 message: feedbackText,
             };
