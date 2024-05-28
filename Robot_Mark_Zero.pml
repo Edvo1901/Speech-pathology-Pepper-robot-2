@@ -90,7 +90,6 @@
         <File name="stretchBreak" src="html/components/breakPage/stretchBreak.js" />
         <File name="feedback" src="html/components/feedback/feedback.css" />
         <File name="feedback" src="html/components/feedback/feedback.html" />
-        <File name="feedback" src="html/components/feedback/feedback.js" />
         <File name="header" src="html/components/header/header.css" />
         <File name="header" src="html/components/header/header.html" />
         <File name="header" src="html/components/header/header.js" />
@@ -132,9 +131,6 @@
         <File name="share" src="html/share.css" />
         <File name="thSound" src="html/assets/thSound.wav" />
         <File name="Music break music" src="html/assets/Music break music.wav" />
-        <File name="feedbackNavigate" src="html/components/feedback/feedbackNavigate.js" />
-        <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
-        <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />
         <File name="README" src="README.md" />
         <File name="iconImage" src="html/assets/iconImage.png" />
         <File name="icon" src="icon.png" />
