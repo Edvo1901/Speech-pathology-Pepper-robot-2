@@ -38,7 +38,7 @@
     </div>
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
-        <button class="btn btn-primary" onClick="sendEmail('test')">Send</button>
+        <button class="btn btn-primary" onClick="sendEmail()">Send</button>
         <button class="btn btn-primary" id="exitButton">Exit</button>
     </div>
 
@@ -81,25 +81,31 @@
         document.getElementById("testing").innerHTML = "script"
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
-            //emailjs.init("C23If__KQRFS7qbwo");
             document.getElementById("testing").innerHTML = "Get to function"
-            // // Retrieve feedback data from local storage
-            // let feedbackData = localStorage.getItem("feedbackData");
-            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            // Retrieve feedback data from local storage
+            let feedbackData = localStorage.getItem("feedbackData");
+            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // // Convert feedback data to a readable format
-            // let feedbackText = "";
-            // for (const [key, value] of Object.entries(feedbackData)) {
-            //     feedbackText += `${key}: ${value}\n`;
-            // }
+            // Convert feedback data to a readable format
+            let feedbackText = "";
+            for (const [key, value] of Object.entries(feedbackData)) {
+                feedbackText += `${key}: ${value}\n`;
+            }
 
             var templateParams = {
-                sendEmail: "hoangtukg5@gmail.com",
-                date: "12",
-                message: "Message", //\n\n${feedbackText}
+                sendEmail: recipientEmail,
+                date: getCurrentDate(),
+                message: feedbackText,
             };
 
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams)
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
+                function (response) {
+                    document.getElementById("testing").innerHTML = response.text
+                },
+                function (error) {
+                    document.getElementById("testing").innerHTML = error
+                }
+            );
         }
     </script>
     <script>
