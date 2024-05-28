@@ -98,7 +98,15 @@
                 message: "Message",
             };
 
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams)
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
+                function (response) {
+                    document.getElementById("testing").innerHTML = response.text
+                },
+                function (error) {
+                    document.getElementById("testing").innerHTML = error
+                }
+            );
+
         }
     </script>
     <script>
