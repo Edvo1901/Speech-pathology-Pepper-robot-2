@@ -132,14 +132,19 @@
         <File name="share" src="html/share.css" />
         <File name="thSound" src="html/assets/thSound.wav" />
         <File name="Music break music" src="html/assets/Music break music.wav" />
-        <File name="emailFeedback" src="html/components/feedback/emailFeedback.js" />
+        <File name="feedbackNavigate" src="html/components/feedback/feedbackNavigate.js" />
+        <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
+        <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />
+        <File name="README" src="README.md" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
         <Topic name="voiceNav_enu" src="voiceNav/voiceNav_enu.top" topicName="voiceNav" language="en_US" />
     </Topics>
-    <IgnoredPaths />
-    <Translations auto-fill="en_US">
+    <IgnoredPaths>
+        <Path src=".vscode" />
+    </IgnoredPaths>
+    <Translations>
         <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />
     </Translations>
 </Package>
