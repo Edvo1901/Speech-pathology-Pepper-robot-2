@@ -90,19 +90,21 @@
 
             document.getElementById("testing").innerHTML = result
             // Retrieve feedback data from local storage
-            // var feedbackData = localStorage.getItem("feedbackData");
-            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            var feedbackData = localStorage.getItem("feedbackData");
+            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // // Convert feedback data to a readable format
-            // var feedbackText = "";
-            // for (const [key, value] of Object.entries(feedbackData)) {
-            //     feedbackText += `${key}: ${value}\n`;
-            // }
+            // Convert feedback data to a readable format
+            var feedbackText = "";
+            for (var key in feedbackData) {
+                if (feedbackData.hasOwnProperty(key)) {
+                    feedbackText += key + ": " + feedbackData[key] + "\n";
+                }
+            }
 
             var templateParams = {
                 sendEmail: recipientEmail,
                 date: result,
-                message: "Message",
+                message: feedbackText,
             };
 
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
