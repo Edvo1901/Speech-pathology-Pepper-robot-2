@@ -38,7 +38,7 @@
     </div>
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
-        <button class="btn btn-primary" id="sendButton">Send</button>
+        <button class="btn btn-primary" id="sendButton" onClick="sendEmail()">Send</button>
         <button class="btn btn-primary" id="exitButton">Exit</button>
     </div>
 
@@ -108,8 +108,11 @@
         }
     </script>
     <script>
+        emailjs.init("C23If__KQRFS7qbwo");
+        document.getElementById("testing").innerHTML = "script"
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
+            emailjs.init("C23If__KQRFS7qbwo");
             document.getElementById("testing").innerHTML = "Get to function"
             // // Retrieve feedback data from local storage
             // let feedbackData = localStorage.getItem("feedbackData");
