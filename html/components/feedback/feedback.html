@@ -81,7 +81,6 @@
             var year = date.getFullYear();
             var result = day + '-' + month + '-' + year
 
-            document.getElementById("testing").innerHTML = result
             // Retrieve feedback data from local storage
             var feedbackData = localStorage.getItem("feedbackData");
             feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
@@ -102,10 +101,10 @@
 
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
                 function (response) {
-                    document.getElementById("testing").innerHTML = response.text
+                    //document.getElementById("testing").innerHTML = response.text
                 },
                 function (error) {
-                    document.getElementById("testing").innerHTML = error
+                    //document.getElementById("testing").innerHTML = error
                 }
             );
         }
