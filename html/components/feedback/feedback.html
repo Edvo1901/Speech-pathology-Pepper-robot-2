@@ -83,19 +83,19 @@
         function sendEmail(recipientEmail) {
             document.getElementById("testing").innerHTML = "Get to function"
             // Retrieve feedback data from local storage
-            var feedbackData = localStorage.getItem("feedbackData");
-            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            // var feedbackData = localStorage.getItem("feedbackData");
+            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // Convert feedback data to a readable format
-            var feedbackText = "";
-            for (const [key, value] of Object.entries(feedbackData)) {
-                feedbackText += `${key}: ${value}\n`;
-            }
+            // // Convert feedback data to a readable format
+            // var feedbackText = "";
+            // for (const [key, value] of Object.entries(feedbackData)) {
+            //     feedbackText += `${key}: ${value}\n`;
+            // }
 
             var templateParams = {
                 sendEmail: "leunghoihang@gmail.com",
                 date: "17",
-                message: feedbackText,
+                message: "Message",
             };
 
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams)
