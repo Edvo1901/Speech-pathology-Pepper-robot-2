@@ -136,6 +136,8 @@
         <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
         <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />
         <File name="README" src="README.md" />
+        <File name="iconImage" src="html/assets/iconImage.png" />
+        <File name="icon" src="icon.png" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
@@ -144,4 +146,7 @@
     <IgnoredPaths>
         <Path src=".vscode" />
     </IgnoredPaths>
+    <Translations auto-fill="en_US">
+        <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />
+    </Translations>
 </Package>
