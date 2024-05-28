@@ -76,6 +76,18 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+    <script>
+                var session = new QiSession(function () {
+            session = s;
+        }, disconnected,location.host);
+
+        function connected(s) {
+
+        }
+        function disconnected(error) {
+            console.log("Session disconnected");
+        }
+    </script>
     <script type="text/javascript">
         // Initialize EmailJS
         emailjs.init("C23If__KQRFS7qbwo");
@@ -124,7 +136,7 @@
             //     feedbackText += `${key}: ${value}\n`;
             // }
 
-            const templateParams = {
+            var templateParams = {
                 sendEmail: "hoangtukg5@gmail.com",
                 date: getCurrentDate(),
                 message: `Feedback data:`, //\n\n${feedbackText}
