@@ -95,20 +95,11 @@
 
             var templateParams = {
                 sendEmail: "hoangtukg5@gmail.com",
-                date: getCurrentDate(),
+                date: "12",
                 message: `Feedback data:`, //\n\n${feedbackText}
             };
 
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
-                function (response) {
-                    //console.log("SUCCESS!", response.status, response.text);
-                    document.getElementById("testing").innerHTML = response.text
-                },
-                function (error) {
-                    //console.log("FAILED...", error);
-                    document.getElementById("testing").innerHTML = error
-                }
-            );
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams)
         }
     </script>
     <script>
