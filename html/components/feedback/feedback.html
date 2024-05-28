@@ -82,7 +82,7 @@
         document.getElementById("testing").innerHTML = "script"
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
-            document.getElementById("testing").innerHTML = recipientEmail
+            document.getElementById("testing").innerHTML = getCurrentDate()
             // Retrieve feedback data from local storage
             // var feedbackData = localStorage.getItem("feedbackData");
             // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
@@ -98,7 +98,8 @@
                 var day = String(date.getDate()).padStart(2, '0');
                 var month = String(date.getMonth() + 1).padStart(2, '0');
                 var year = date.getFullYear();
-                return day + '-' + month + '-' + year;
+                var result = day + '-' + month + '-' + year
+                return result;
             }
 
             var templateParams = {
