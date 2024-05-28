@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isolation Page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="isolationLevelPage.css">
 </head>
+
 <body>
     <div id="header-placeholder"></div>
     <div class="d-flex justify-content-center align-items-center" style="margin-top: 5vh">
@@ -14,7 +17,8 @@
             <div class="card-body">
                 <h2 class="card-title">Isolation Page</h2>
                 <video width="400" height="200" controls>
-                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                    <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                        type="video/mp4">
                 </video>
                 <div class="isolation-page-button-group" style="margin-top: 2vh">
                     <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
@@ -25,7 +29,9 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="isolationLevelPage.js"></script>
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
@@ -34,13 +40,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
     <script>
         var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
@@ -50,31 +58,14 @@
         }
         function disconnected(error) {
             console.log("Session disconnected");
-       }
+        }
 
         session.service("ALMemory").done(function (memory) {
             //this dont work, research more
             memory.raiseEvent("stepFive", true);
         });
 
-
-
-        // session.service("ALTextToSpeech").done(function (tts) {
-        //     tts.say("The “th” sound is used in words such as “three”, “toothpaste” and “both." +
-        //     "           We make the “th” sound by putting the tip of our tongue between our teeth like this.           " +
-        //     "           "+
-        //     "           th." +
-        //     "    Now its your turn. say.           " +
-        //     "           "+
-        //     "           th.");
-        //     // tts is a proxy to the ALTextToSpeech service
-        //     }).fail(function (error) {
-        //     console.log("An error occurred:", error);
-        //         //displayDiv2.textContent = "An error occurred ALTextToSpeech";
-        //     });
-
-
     </script>
-
 </body>
+
 </html>

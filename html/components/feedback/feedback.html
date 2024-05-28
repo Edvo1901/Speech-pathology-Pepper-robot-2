@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feedback page</title>
     <link rel="stylesheet" href="feedback.css" />
 </head>
 
@@ -41,9 +41,6 @@
         <button class="btn btn-primary" id="sendButton">Send</button>
         <button class="btn btn-primary" id="exitButton">Exit</button>
     </div>
-
-    <div id="testing">Test</div>
-
     <div id="passwordModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -65,10 +62,6 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="../../js/importHeader.js"></script>
-    <!-- <script src="./feedback.js"></script>
-    <script src="./feedbackNavigate.js"></script>
-    <script src="./feedbackCollection.js"></script>
-    <script src="./feedbackModal.js"></script> -->
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js"></script>
@@ -79,7 +72,7 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script>
         emailjs.init("C23If__KQRFS7qbwo");
-        document.getElementById("testing").innerHTML = "script"
+
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
             var date = new Date();
@@ -130,9 +123,6 @@
         }
     </script>
     <script>
-        // Initialize EmailJS
-        //emailjs.init("C23If__KQRFS7qbwo");
-
         // Function to send feedback and store it in local storage
         function sendFeedback(feedbackType) {
             document.getElementById("testing").innerHTML = feedbackType
@@ -146,16 +136,8 @@
             }
 
             localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
-            // console.log("Feedback recorded:", feedbackData);
         }
-
-
     </script>
-    <script>
-        // Function to get the current date in dd-mm-yyyy format
-
-    </script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("homeButton").addEventListener("click", function () {
@@ -208,8 +190,6 @@
                 if (enteredEmail) {
                     $("#passwordModal").css("display", "none");
                     $("#emailModal").css("display", "none");
-                    // Initialising EmailJS
-                    emailjs.init("C23If__KQRFS7qbwo");
                     sendEmail(enteredEmail);
                 } else {
                     alert("Enter an email!")

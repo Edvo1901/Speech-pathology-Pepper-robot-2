@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="syllableLevelPage.css">
 </head>
+
 <body>
     <div id="header-placeholder"></div>
     <div class="container page-container" style="margin-top: 3vh">
@@ -16,39 +18,46 @@
             <div class="row">
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/EE.png" alt="eeSound" class="img-fluid" id="imageOne" onClick="imageButton('imageOne')">
+                        <img src="../../assets/EE.png" alt="eeSound" class="img-fluid" id="imageOne"
+                            onClick="imageButton('imageOne')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/AY.png" alt="aySound" class="img-fluid" id="imageTwo" onClick="imageButton('imageTwo')">
+                        <img src="../../assets/AY.png" alt="aySound" class="img-fluid" id="imageTwo"
+                            onClick="imageButton('imageTwo')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/OO.png" alt="ooSound" class="img-fluid" id="imageThree" onClick="imageButton('imageThree')">
+                        <img src="../../assets/OO.png" alt="ooSound" class="img-fluid" id="imageThree"
+                            onClick="imageButton('imageThree')">
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OW.png" alt="owSound" class="img-fluid" id="imageFour" onClick="imageButton('imageFour')">
+                        <img src="../../assets/OW.png" alt="owSound" class="img-fluid" id="imageFour"
+                            onClick="imageButton('imageFour')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OY.png" alt="oySound" class="img-fluid" id="imageFive" onClick="imageButton('imageFive')">
+                        <img src="../../assets/OY.png" alt="oySound" class="img-fluid" id="imageFive"
+                            onClick="imageButton('imageFive')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/II.png" alt="iiSound" class="img-fluid" id="imageSix" onClick="imageButton('imageSix')">
+                        <img src="../../assets/II.png" alt="iiSound" class="img-fluid" id="imageSix"
+                            onClick="imageButton('imageSix')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/OH.png" alt="ohSound" class="img-fluid" id="imageSeven" onClick="imageButton('imageSeven')">
+                        <img src="../../assets/OH.png" alt="ohSound" class="img-fluid" id="imageSeven"
+                            onClick="imageButton('imageSeven')">
                     </button>
                 </div>
             </div>
@@ -73,29 +82,16 @@
 
         var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
         }
         function disconnected(error) {
             console.log("Session disconnected");
-       }
+        }
 
-        // session.service("ALTextToSpeech").done(function (tts) {
-        //     tts.say("step eight running");
-        // }).fail(function (error) {
-        // console.log("An error occurred:", error);
-        // });
-
-        session.service("ALMemory").done(function (memory) {
-
-            //this dont work, research more
-            memory.raiseEvent("stepEight", true);
-        });
-
-        function imageButton(input)
-        {
+        function imageButton(input) {
             //delete unnessary string for the src string
             var speechString = document.getElementById(input).src;
             speechString = speechString.split("/");
@@ -104,8 +100,7 @@
             speechString = speechString[0];
 
             //if two letter is the same e.g. OO, it should just O in ALTextToSpeech
-            if(speechString[0] == speechString[1] && speechString != "OO")
-            {
+            if (speechString[0] == speechString[1] && speechString != "OO") {
                 speechString = speechString[0];
             }
 
@@ -113,12 +108,13 @@
             console.log(speechString);
 
             session.service("ALTextToSpeech").done(function (tts) {
-            tts.say(speechString.toLowerCase());
+                tts.say(speechString.toLowerCase());
             }).fail(function (error) {
-            console.log("An error occurred:", error);
+                console.log("An error occurred:", error);
             });
         }
 
     </script>
 </body>
+
 </html>
