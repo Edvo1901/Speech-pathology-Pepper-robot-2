@@ -58,7 +58,8 @@
             <span class="close">&times;</span>
             <h5 class="modal-title">Enter email</h5>
             <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
-            <button type="button" class="btn btn-primary submit-button" id="submitEmail" onClick="sendEmail()">Submit</button>
+            <button type="button" class="btn btn-primary submit-button" id="submitEmail"
+                onClick="sendEmail()">Submit</button>
         </div>
     </div>
 
@@ -92,9 +93,17 @@
             //     feedbackText += `${key}: ${value}\n`;
             // }
 
+            function getCurrentDate() {
+                var date = new Date();
+                var day = String(date.getDate()).padStart(2, '0');
+                var month = String(date.getMonth() + 1).padStart(2, '0');
+                var year = date.getFullYear();
+                return `${day}-${month}-${year}`;
+            }
+
             var templateParams = {
                 sendEmail: recipientEmail,
-                date: "17",
+                date: getCurrentDate(),
                 message: "Message",
             };
 
@@ -106,13 +115,12 @@
                     document.getElementById("testing").innerHTML = error
                 }
             );
-
         }
     </script>
     <script>
-                var session = new QiSession(function () {
+        var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
 
@@ -143,14 +151,8 @@
 
     </script>
     <script>
-                // Function to get the current date in dd-mm-yyyy format
-                function getCurrentDate() {
-            const date = new Date();
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            return `${day}-${month}-${year}`;
-        }
+        // Function to get the current date in dd-mm-yyyy format
+
     </script>
 
     <script>
