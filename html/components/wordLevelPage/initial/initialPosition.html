@@ -54,58 +54,51 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <script>
+        
         localStorage.setItem("buttonCount", 0);
         var session = new QiSession(function () {
             session = s;
         }, disconnected,location.host);
 
         function connected(s) {
-
+            localStorage.setItem("buttonCount", 0);
         }
         function disconnected(error) {
             console.log("Session disconnected");
         }
 
-        
-
-        var button = 0;
-
         function readTextOnButton(button)
         {
-            var bracketSwitchBegin = 0;
             var readString = document.getElementById(button.id).innerHTML.toString();
             readString = readString.replace("<u>","");
             readString = readString.replace("</u>","");
             console.log(readString);
 
             var buttonCount = localStorage.getItem("buttonCount");
+
             buttonCount++;
+
             console.log(buttonCount);
 
-            if(buttonCount >= 10)
+            localStorage.setItem("buttonCount", buttonCount);
+
+            
+
+            if(buttonCount > 9)
+            {
+                console.log("triggered");
+                session.service("ALMemory").done(function (memory) {
+                    memory.raiseEvent("stepEleven", String(readString));
+                });
+            }
+            else
             {
                 session.service("ALTextToSpeech").done(function (tts) {
                     tts.say(readString);
                 }).fail(function (error) {
-                console.log("An error occurred:", error);
-                });
-
-                session.service("ALMemory").done(function (memory) {
-
-                    memory.raiseEvent("stepEleven", "all button pressed");
-                    });
-            }
-            else
-            {
-                localStorage.setItem("buttonCount", buttonCount);
-
-                session.service("ALTextToSpeech").done(function (tts) {
-                tts.say(readString);
-                }).fail(function (error) {
-                console.log("An error occurred:", error);
+                    console.log("An error occurred:", error);
                 });
             }
-
             
         }
     </script>
