@@ -80,17 +80,17 @@
 
         // Function to send feedback and store it in local storage
         function sendFeedback(feedbackType) {
-            let feedbackData = localStorage.getItem("feedbackData");
-            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            // let feedbackData = localStorage.getItem("feedbackData");
+            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            if (feedbackData[feedbackType]) {
-                feedbackData[feedbackType] += 1;
-            } else {
-                feedbackData[feedbackType] = 1;
-            }
+            // if (feedbackData[feedbackType]) {
+            //     feedbackData[feedbackType] += 1;
+            // } else {
+            //     feedbackData[feedbackType] = 1;
+            // }
 
-            localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
-            console.log("Feedback recorded:", feedbackData);
+            // localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+            // console.log("Feedback recorded:", feedbackData);
         }
 
         // Function to get the current date in dd-mm-yyyy format
@@ -104,28 +104,28 @@
 
         // Function to send an email with feedback data
         function sendEmail(recipientEmail) {
-            // Retrieve feedback data from local storage
-            let feedbackData = localStorage.getItem("feedbackData");
-            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            // // Retrieve feedback data from local storage
+            // let feedbackData = localStorage.getItem("feedbackData");
+            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // Convert feedback data to a readable format
-            let feedbackText = "";
-            for (const [key, value] of Object.entries(feedbackData)) {
-                feedbackText += `${key}: ${value}\n`;
-            }
+            // // Convert feedback data to a readable format
+            // let feedbackText = "";
+            // for (const [key, value] of Object.entries(feedbackData)) {
+            //     feedbackText += `${key}: ${value}\n`;
+            // }
 
             const templateParams = {
                 sendEmail: recipientEmail,
                 date: getCurrentDate(),
-                message: `Feedback data:\n\n${feedbackText}`,
+                message: `Feedback data:`, //\n\n${feedbackText}
             };
 
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
                 function (response) {
-                    console.log("SUCCESS!", response.status, response.text);
+                    //console.log("SUCCESS!", response.status, response.text);
                 },
                 function (error) {
-                    console.log("FAILED...", error);
+                    //console.log("FAILED...", error);
                 }
             );
         }
