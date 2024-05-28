@@ -144,7 +144,4 @@
     <IgnoredPaths>
         <Path src=".vscode" />
     </IgnoredPaths>
-    <Translations>
-        <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />
-    </Translations>
 </Package>
