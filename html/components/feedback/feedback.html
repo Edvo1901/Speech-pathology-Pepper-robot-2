@@ -77,6 +77,41 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script>
+        //emailjs.init("C23If__KQRFS7qbwo");
+        document.getElementById("testing").innerHTML = "script"
+        // Function to send an email with feedback data
+        function sendEmail(recipientEmail) {
+            //emailjs.init("C23If__KQRFS7qbwo");
+            document.getElementById("testing").innerHTML = "Get to function"
+            // // Retrieve feedback data from local storage
+            // let feedbackData = localStorage.getItem("feedbackData");
+            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+
+            // // Convert feedback data to a readable format
+            // let feedbackText = "";
+            // for (const [key, value] of Object.entries(feedbackData)) {
+            //     feedbackText += `${key}: ${value}\n`;
+            // }
+
+            // var templateParams = {
+            //     sendEmail: "hoangtukg5@gmail.com",
+            //     date: getCurrentDate(),
+            //     message: `Feedback data:`, //\n\n${feedbackText}
+            // };
+
+            // emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
+            //     function (response) {
+            //         //console.log("SUCCESS!", response.status, response.text);
+            //         document.getElementById("testing").innerHTML = response.text
+            //     },
+            //     function (error) {
+            //         //console.log("FAILED...", error);
+            //         document.getElementById("testing").innerHTML = error
+            //     }
+            // );
+        }
+    </script>
+    <script>
                 var session = new QiSession(function () {
             session = s;
         }, disconnected,location.host);
@@ -88,9 +123,9 @@
             console.log("Session disconnected");
         }
     </script>
-    <script type="text/javascript">
+    <script>
         // Initialize EmailJS
-        emailjs.init("C23If__KQRFS7qbwo");
+        //emailjs.init("C23If__KQRFS7qbwo");
 
         // Function to send feedback and store it in local storage
         function sendFeedback(feedbackType) {
@@ -119,41 +154,7 @@
             return `${day}-${month}-${year}`;
         }
     </script>
-    <script>
-        emailjs.init("C23If__KQRFS7qbwo");
-        document.getElementById("testing").innerHTML = "script"
-        // Function to send an email with feedback data
-        function sendEmail(recipientEmail) {
-            emailjs.init("C23If__KQRFS7qbwo");
-            document.getElementById("testing").innerHTML = "Get to function"
-            // // Retrieve feedback data from local storage
-            // let feedbackData = localStorage.getItem("feedbackData");
-            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // // Convert feedback data to a readable format
-            // let feedbackText = "";
-            // for (const [key, value] of Object.entries(feedbackData)) {
-            //     feedbackText += `${key}: ${value}\n`;
-            // }
-
-            var templateParams = {
-                sendEmail: "hoangtukg5@gmail.com",
-                date: getCurrentDate(),
-                message: `Feedback data:`, //\n\n${feedbackText}
-            };
-
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
-                function (response) {
-                    //console.log("SUCCESS!", response.status, response.text);
-                    document.getElementById("testing").innerHTML = response.text
-                },
-                function (error) {
-                    //console.log("FAILED...", error);
-                    document.getElementById("testing").innerHTML = error
-                }
-            );
-        }
-    </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("homeButton").addEventListener("click", function () {
