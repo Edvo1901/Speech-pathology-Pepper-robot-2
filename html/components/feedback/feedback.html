@@ -135,16 +135,17 @@
 
         // Function to send feedback and store it in local storage
         function sendFeedback(feedbackType) {
-            // let feedbackData = localStorage.getItem("feedbackData");
-            // feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+            document.getElementById("testing").innerHTML = feedbackType
+            var feedbackData = localStorage.getItem("feedbackData");
+            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            // if (feedbackData[feedbackType]) {
-            //     feedbackData[feedbackType] += 1;
-            // } else {
-            //     feedbackData[feedbackType] = 1;
-            // }
+            if (feedbackData[feedbackType]) {
+                feedbackData[feedbackType] += 1;
+            } else {
+                feedbackData[feedbackType] = 1;
+            }
 
-            // localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+            localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
             // console.log("Feedback recorded:", feedbackData);
         }
 
