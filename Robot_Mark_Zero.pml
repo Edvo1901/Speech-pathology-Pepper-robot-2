@@ -143,9 +143,7 @@
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
         <Topic name="voiceNav_enu" src="voiceNav/voiceNav_enu.top" topicName="voiceNav" language="en_US" />
     </Topics>
-    <IgnoredPaths>
-        <Path src=".vscode" />
-    </IgnoredPaths>
+    <IgnoredPaths />
     <Translations auto-fill="en_US">
         <Translation name="translation_en_US" src="translations/translation_en_US.ts" language="en_US" />
     </Translations>
