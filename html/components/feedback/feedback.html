@@ -39,7 +39,7 @@
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
         <button class="btn btn-primary" id="sendButton">Send</button>
-        <button class="btn btn-primary" id="exitButton">Exit</button>
+        <button class="btn btn-primary" id="exitButton" onclick="exitButton()">Exit</button>
     </div>
     <div id="passwordModal" class="modal">
         <div class="modal-content">
@@ -71,45 +71,6 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
     <script>
-        emailjs.init("C23If__KQRFS7qbwo");
-
-        // Function to send an email with feedback data
-        function sendEmail(recipientEmail) {
-            var date = new Date();
-            var day = ('0' + date.getDate()).slice(-2);
-            var month = ('0' + (date.getMonth() + 1)).slice(-2);
-            var year = date.getFullYear();
-            var result = day + '-' + month + '-' + year
-
-            // Retrieve feedback data from local storage
-            var feedbackData = localStorage.getItem("feedbackData");
-            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
-
-            // Convert feedback data to a readable format
-            var feedbackText = "";
-            for (var key in feedbackData) {
-                if (feedbackData.hasOwnProperty(key)) {
-                    feedbackText += key + ": " + feedbackData[key] + "\n";
-                }
-            }
-
-            var templateParams = {
-                sendEmail: recipientEmail,
-                date: result,
-                message: feedbackText,
-            };
-
-            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
-                function (response) {
-                    //document.getElementById("testing").innerHTML = response.text
-                },
-                function (error) {
-                    //document.getElementById("testing").innerHTML = error
-                }
-            );
-        }
-    </script>
-    <script>
         var session = new QiSession(function () {
             session = s;
         }, disconnected, location.host);
@@ -122,19 +83,122 @@
         }
     </script>
     <script>
-        // Function to send feedback and store it in local storage
-        function sendFeedback(feedbackType) {
-            document.getElementById("testing").innerHTML = feedbackType
+        emailjs.init("C23If__KQRFS7qbwo");
+
+        //setup localStorage
+            var currentIdFound = 0;
+            var lastId;
+            
+            for ( var i = 0, len = localStorage.length; i < len; ++i )
+            {
+                if(localStorage.getItem(localStorage.key(i)) == "lastId" )
+                {
+                    currentIdFound = 1;
+                }
+            }
+            if(currentIdFound == 0)
+            {
+                localStorage.setItem("lastId",-1);
+                var bigArray = new Object();
+                localStorage.setItem("feedbackData",JSON.stringify(bigArray));
+                console.log(localStorage.getItem("feedbackData"));
+            }
+        //setup localStorage END
+
+        function exitButton()
+        {
+            session.service("ALMemory").done(function (memory) {
+                    memory.raiseEvent("exit", true);
+                });
+        }
+
+        // Function to send an email with feedback data
+        function sendEmail(recipientEmail) 
+        {
+            var date = new Date();
+            var day = ('0' + date.getDate()).slice(-2);
+            var month = ('0' + (date.getMonth() + 1)).slice(-2);
+            var year = date.getFullYear();
+            var dateString = day + '-' + month + '-' + year
+
+            // Retrieve feedback data from local storage
             var feedbackData = localStorage.getItem("feedbackData");
             feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            if (feedbackData[feedbackType]) {
-                feedbackData[feedbackType] += 1;
-            } else {
-                feedbackData[feedbackType] = 1;
+            //---------------new part---------------Create string for html table in email//
+            var tableTitleString = "<tr><th>Id</th><th>Date</th><th>Time</th><th>Feedback</th></tr>";
+            var rowString = [];
+
+            var feedbackData = JSON.parse(localStorage.getItem("feedbackData"));
+            var length = Number(localStorage.getItem("lastId"))+1
+
+            for (var i = 0; i < length; i++) 
+            {
+                rowString[i] = "<td>"+feedbackData[i].id+"</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].date + "</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].time + "</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].feedbackData + "</td>";
+                rowString[i] = "<tr>" + rowString[i] + "</tr>";
             }
 
-            localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+            for (var x = 0; x < rowString.length; x++) 
+            {
+                tableTitleString = tableTitleString + rowString[x];
+            }
+            
+            tableTitleString = "<table>" + tableTitleString + "</table>";
+            //---------------new part---------------//
+
+            var templateParams = {
+                sendEmail: "leunghoihang@gmail.com",
+                date: dateString,
+                tableHtml: tableTitleString,
+            };
+
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
+                function (response) {
+                    console.log(response);
+                    //document.getElementById("testing").innerHTML = response.text
+                },
+                function (error) {
+                    console.log(error);
+                    //document.getElementById("testing").innerHTML = error
+                }
+            );
+        }
+    </script>
+    <script>
+        // Function to send feedback and store it in local storage
+        function sendFeedback(feedbackType) 
+        {
+            lastId = Number(localStorage.getItem("lastId"));
+
+            //Get current date
+            var date = new Date();
+            var day = ('0' + date.getDate()).slice(-2);
+            var month = ('0' + (date.getMonth() + 1)).slice(-2);
+            var year = date.getFullYear();
+            var dateString = day + '-' + month + '-' + year
+            var thisId = lastId + 1;
+
+            //Create object for a single feedback
+            var dataRow = new Object();
+            dataRow.id = thisId;
+            dataRow.date  = dateString;
+            dataRow.feedbackData = feedbackType;
+            dataRow.time = (date.getHours() < 10) ? "0" + date.getHours() + ":" : date.getHours() + ":" ;
+            dataRow.time = (date.getMinutes() < 10) ? dataRow.time + "0" + date.getMinutes() : dataRow.time + date.getMinutes();
+            var jsonString= JSON.stringify(dataRow);
+
+            //Get json object from localStorage
+            var feedbackData = localStorage.getItem("feedbackData");
+            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+
+            //Add the feedback item in json object
+            feedbackData[thisId] = dataRow;
+            localStorage.setItem("feedbackData",JSON.stringify(feedbackData));
+            localStorage.setItem("lastId",thisId);
+            console.log(feedbackData);
         }
     </script>
     <script>
