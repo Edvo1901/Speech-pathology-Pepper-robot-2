@@ -136,6 +136,8 @@
         <File name="completePage" src="html/components/completePage/completePage.css" />
         <File name="completePage" src="html/components/completePage/completePage.html" />
         <File name="thVideo" src="html/assets/thVideo.mp4" />
+        <File name="iconImage02" src="html/assets/iconImage02.png" />
+        <File name="icon" src="icon.png" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
