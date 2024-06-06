@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    $("#header-placeholder").load("../header/header.html");
-
     document.getElementById('isolationPageNavigate').addEventListener('click', function() {
         window.location.href = '../isolationLevelPage/isolationLevelPage.html';
     });
