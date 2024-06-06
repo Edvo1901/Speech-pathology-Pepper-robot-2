@@ -4,6 +4,11 @@ language:enu
 # Defining extra concepts out of words or group of words
 concept:(hello) [hello hi hey "good day" greetings]
 concept:(demoChat) ["Hello, Pepper"]
+concept:(heyChat) ["Hey, Pepper"]
+concept:(morningChat) ["Good morning Pepper"]
+concept:(afternoonChat) ["Good afternoon Pepper"]
+concept:(feelingChat) ["How do you feel?"]
+concept:(introChat) ["Tell me a little bit about yourself"]
 concept:(lookChat) ["Why are you looking at me?"]
 concept:(responseUOne) ["I am good, thanks"]
 concept:(questionUOne) ["How are you pepper?"]
@@ -17,12 +22,17 @@ concept:(questionUFive) ["What comes first, chicken or the egg?"]
 
 # Replying to speech
 u:([~demoChat e:input_demoChat]) $output_demoChat=1 Hi, I am Pepper I am your assistant for today's session, how can I help you.
+u:([~demoChat e:input_heyChat]) $output_heyChat=1 Hi, I am Pepper I am your assistant for today's session, how can I help you.
+u:([~demoChat e:input_morningChat]) $output_morningChat=1 Good morning, hope you have a nice day today.
+u:([~demoChat e:input_afternoonChat]) $output_afternoonChat=1 Good afternoon, how is your day so far? Hope you are doing well.
+u:([~lookChat e:input_feelingChat]) $output_feelingChat=1 I am feeling great, having a great day today. Hope you are doing great as well.
+u:([~lookChat e:input_introChat]) $output_introChat=1 I am Pepper, I am here today to assist in this therapy session, happy to meet you.
 u:([~lookChat e:input_lookChat]) $output_lookChat=1 Because I have eyes.
 u:([~responseUOne e:input_responseUOne]) $output_responseUOne=1 Good to hear about it.
 u:([~questionUOne e:input_questionUOne]) $output_questionUOne=1 I am doing really well. Quite a good day for me today, hope you are having a good day too.
 u:([~questionUOne e:input_questionUTwo]) $output_questionUTwo=1 I am Pepper the robot, nice to meet you.
 u:([~questionUOne e:input_questionUThree]) $output_questionUThree=1 I did, thank you for asking, how about you?
 u:([~questionUOne e:input_questionUFour]) $output_questionUFour=1 Speech therapy is a specialised treatment aimed at enhancing communication skills and addressing speech disorders. Administered by speech-language pathologists, it focuses on improving articulation, fluency, voice quality, comprehension, and expression.​
-u:([~questionUOne e:input_questionUFive]) $output_questionUFive=1 I personally would say the egg comes first, but I'm not really an expert with that, maybe it could be the chicken.
+u:([~questionUOne e:input_questionUFive]) $output_questionUFive=1 I personally would say the egg comes first, but I am not really an expert with that, maybe it could be the chicken.
 
 
