@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback page</title>
     <link rel="stylesheet" href="feedback.css" />
+    <style>
+        .selected {
+            border: 2px solid blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,50 +19,26 @@
         <div class="card blur-card text-center">
             <div class="card-body feedback-container">
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_1.png" alt="Dissatisfy" class="feedback-image"
-                        onclick="sendFeedback('Dissatisfy')">
+                    <img src="../../assets/Rating_face_1.png" alt="Dissatisfy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_2.png" alt="Unhappy" class="feedback-image"
-                        onclick="sendFeedback('Unhappy')">
+                    <img src="../../assets/Rating_face_2.png" alt="Unhappy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_3.png" alt="Neutral" class="feedback-image"
-                        onclick="sendFeedback('Neutral')">
+                    <img src="../../assets/Rating_face_3.png" alt="Neutral" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_4.png" alt="Happy" class="feedback-image"
-                        onclick="sendFeedback('Happy')">
+                    <img src="../../assets/Rating_face_4.png" alt="Happy" class="feedback-image">
                 </div>
                 <div class="feedback-content">
-                    <img src="../../assets/Rating_face_5.png" alt="Exceptional" class="feedback-image"
-                        onclick="sendFeedback('Exceptional')">
+                    <img src="../../assets/Rating_face_5.png" alt="Exceptional" class="feedback-image">
                 </div>
             </div>
         </div>
     </div>
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
-        <button class="btn btn-primary" id="sendButton">Send</button>
-        <button class="btn btn-primary" id="exitButton" onclick="exitButton()">Exit</button>
-    </div>
-    <div id="passwordModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h5 class="modal-title">Enter Password</h5>
-            <input type="password" id="passwordInput" class="form-control" placeholder="Enter your password">
-            <button type="button" class="btn btn-primary submit-button" id="submitPassword">Submit</button>
-        </div>
-    </div>
-
-    <div id="emailModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h5 class="modal-title">Enter email</h5>
-            <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
-            <button type="button" class="btn btn-primary submit-button" id="submitEmail"
-                onClick="sendEmail()">Submit</button>
-        </div>
+        <button class="btn btn-primary" id="sendButton" onClick="submitFeedback()">Submit</button>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -86,35 +67,24 @@
         emailjs.init("C23If__KQRFS7qbwo");
 
         //setup localStorage
-            var currentIdFound = 0;
-            var lastId;
-            
-            for ( var i = 0, len = localStorage.length; i < len; ++i )
-            {
-                if(localStorage.getItem(localStorage.key(i)) == "lastId" )
-                {
-                    currentIdFound = 1;
-                }
+        var currentIdFound = 0;
+        var lastId;
+
+        for (var i = 0, len = localStorage.length; i < len; ++i) {
+            if (localStorage.getItem(localStorage.key(i)) == "lastId") {
+                currentIdFound = 1;
             }
-            if(currentIdFound == 0)
-            {
-                localStorage.setItem("lastId",-1);
-                var bigArray = new Object();
-                localStorage.setItem("feedbackData",JSON.stringify(bigArray));
-                console.log(localStorage.getItem("feedbackData"));
-            }
+        }
+        if (currentIdFound == 0) {
+            localStorage.setItem("lastId", -1);
+            var bigArray = new Object();
+            localStorage.setItem("feedbackData", JSON.stringify(bigArray));
+            console.log(localStorage.getItem("feedbackData"));
+        }
         //setup localStorage END
 
-        function exitButton()
-        {
-            session.service("ALMemory").done(function (memory) {
-                    memory.raiseEvent("exit", true);
-                });
-        }
-
         // Function to send an email with feedback data
-        function sendEmail(recipientEmail) 
-        {
+        function sendEmail() {
             var date = new Date();
             var day = ('0' + date.getDate()).slice(-2);
             var month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -130,22 +100,20 @@
             var rowString = [];
 
             var feedbackData = JSON.parse(localStorage.getItem("feedbackData"));
-            var length = Number(localStorage.getItem("lastId"))+1
+            var length = Number(localStorage.getItem("lastId")) + 1
 
-            for (var i = 0; i < length; i++) 
-            {
-                rowString[i] = "<td>"+feedbackData[i].id+"</td>";
+            for (var i = 0; i < length; i++) {
+                rowString[i] = "<td>" + feedbackData[i].id + "</td>";
                 rowString[i] = rowString[i] + "<td>" + feedbackData[i].date + "</td>";
                 rowString[i] = rowString[i] + "<td>" + feedbackData[i].time + "</td>";
                 rowString[i] = rowString[i] + "<td>" + feedbackData[i].feedbackData + "</td>";
                 rowString[i] = "<tr>" + rowString[i] + "</tr>";
             }
 
-            for (var x = 0; x < rowString.length; x++) 
-            {
+            for (var x = 0; x < rowString.length; x++) {
                 tableTitleString = tableTitleString + rowString[x];
             }
-            
+
             tableTitleString = "<table>" + tableTitleString + "</table>";
             //---------------new part---------------//
 
@@ -157,106 +125,74 @@
 
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
                 function (response) {
-                    console.log(response);
-                    //document.getElementById("testing").innerHTML = response.text
+                    console.log(">>>Success", response);
+                    window.location.href = "../completePage/completePage.html";
                 },
                 function (error) {
-                    console.log(error);
-                    //document.getElementById("testing").innerHTML = error
+                    console.log(">>>Error", error);
                 }
             );
         }
-    </script>
-    <script>
-        // Function to send feedback and store it in local storage
-        function sendFeedback(feedbackType) 
-        {
-            lastId = Number(localStorage.getItem("lastId"));
 
-            //Get current date
-            var date = new Date();
-            var day = ('0' + date.getDate()).slice(-2);
-            var month = ('0' + (date.getMonth() + 1)).slice(-2);
-            var year = date.getFullYear();
-            var dateString = day + '-' + month + '-' + year
-            var thisId = lastId + 1;
+        // Variable to store selected feedback
+        let selectedFeedback = null;
+
+        // Function to handle feedback image click
+        document.querySelectorAll(".feedback-image").forEach((image) => {
+            image.addEventListener("click", function () {
+                // Remove 'selected' class from all images
+                document.querySelectorAll(".feedback-image").forEach((img) => {
+                    img.classList.remove("selected");
+                });
+
+                // Add 'selected' class to the clicked image
+                this.classList.add("selected");
+
+                // Store the selected feedback
+                selectedFeedback = this.alt;
+            });
+        });
+
+        // Function to handle submit button click
+        function submitFeedback() {
+            if (selectedFeedback) {
+                lastId = Number(localStorage.getItem("lastId"));
+
+                // Get current date
+                var date = new Date();
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                var dateString = day + '-' + month + '-' + year
+                var thisId = lastId + 1;
 
             //Create object for a single feedback
             var dataRow = new Object();
             dataRow.id = thisId;
             dataRow.date  = dateString;
-            dataRow.feedbackData = feedbackType;
+            dataRow.feedbackData = selectedFeedback;
             dataRow.time = (date.getHours() < 10) ? "0" + date.getHours() + ":" : date.getHours() + ":" ;
             dataRow.time = (date.getMinutes() < 10) ? dataRow.time + "0" + date.getMinutes() : dataRow.time + date.getMinutes();
             var jsonString= JSON.stringify(dataRow);
 
-            //Get json object from localStorage
-            var feedbackData = localStorage.getItem("feedbackData");
-            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+                // Get json object from localStorage
+                var feedbackData = localStorage.getItem("feedbackData");
+                feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
 
-            //Add the feedback item in json object
-            feedbackData[thisId] = dataRow;
-            localStorage.setItem("feedbackData",JSON.stringify(feedbackData));
-            localStorage.setItem("lastId",thisId);
-            console.log(feedbackData);
+                // Add the feedback item in json object
+                feedbackData[thisId] = dataRow;
+                localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+                localStorage.setItem("lastId", thisId);
+
+                sendEmail()
+            } else {
+                alert("Please select a feedback option before submitting.");
+            }
         }
-    </script>
-    <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("homeButton").addEventListener("click", function () {
                 window.location.href = "../lessonSelection/lessonSelection.html";
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".feedback-image").forEach((image) => {
-                image.addEventListener("click", function () {
-                    const feedbackType = this.alt;
-                    sendFeedback(feedbackType);
-                });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            var correctPassword = "123456"; // Set your password here
-
-            $("#sendButton").click(function () {
-                $("#passwordModal").css("display", "block");
-            });
-
-            $(".close").click(function () {
-                $("#passwordModal").css("display", "none");
-                $("#emailModal").css("display", "none");
-            });
-
-            $(window).click(function (event) {
-                if (event.target.id === "passwordModal") {
-                    $("#passwordModal").css("display", "none");
-                }
-            });
-
-            $("#submitPassword").click(function () {
-                var enteredPassword = $("#passwordInput").val();
-                if (enteredPassword === correctPassword) {
-                    $("#passwordModal").css("display", "none");
-                    $("#emailModal").css("display", "block");
-                } else {
-                    alert("Incorrect password. Please try again.");
-                }
-            });
-
-            $("#submitEmail").click(function () {
-                var enteredEmail = $("#emailInput").val();
-
-                if (enteredEmail) {
-                    $("#passwordModal").css("display", "none");
-                    $("#emailModal").css("display", "none");
-                    sendEmail(enteredEmail);
-                } else {
-                    alert("Enter an email!")
-                }
             });
         });
     </script>
