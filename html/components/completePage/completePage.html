@@ -49,12 +49,6 @@
         function disconnected(error) {
             console.log("Session disconnected");
         }
-
-        session.service("ALMemory").done(function (memory) {
-            //this dont work, research more
-            memory.raiseEvent("stepFive", true);
-        });
-
     </script>
     <script>
         function exitButton() {
