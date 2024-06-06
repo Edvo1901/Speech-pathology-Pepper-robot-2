@@ -138,20 +138,20 @@
         var selectedFeedback = null;
 
         // Function to handle feedback image click
-        document.querySelectorAll(".feedback-image").forEach((image) => {
-            image.addEventListener("click", function () {
-                // Remove 'selected' class from all images
-                document.querySelectorAll(".feedback-image").forEach((img) => {
-                    img.classList.remove("selected");
-                });
+        // document.querySelectorAll(".feedback-image").forEach((image) => {
+        //     image.addEventListener("click", function () {
+        //         // Remove 'selected' class from all images
+        //         document.querySelectorAll(".feedback-image").forEach((img) => {
+        //             img.classList.remove("selected");
+        //         });
 
-                // Add 'selected' class to the clicked image
-                this.classList.add("selected");
+        //         // Add 'selected' class to the clicked image
+        //         this.classList.add("selected");
 
-                // Store the selected feedback
-                selectedFeedback = this.alt;
-            });
-        });
+        //         // Store the selected feedback
+        //         selectedFeedback = this.alt;
+        //     });
+        // });
 
         // Function to handle submit button click
         function submitFeedback() {
