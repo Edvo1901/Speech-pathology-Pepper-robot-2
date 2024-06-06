@@ -133,7 +133,6 @@
         <File name="Music break music" src="html/assets/Music break music.wav" />
         <File name="README" src="README.md" />
         <File name="iconImage" src="html/assets/iconImage.png" />
-        <File name="icon" src="icon.png" />
         <File name="feedback" src="html/components/feedback/feedback.js" />
         <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
         <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />

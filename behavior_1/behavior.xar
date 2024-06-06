@@ -1167,8 +1167,10 @@ class MyClass(GeneratedClass):
         pass
 
     def onInput_onStart(self):
-        #self.onStopped() #activate the output of the box
-        self.session().service('ALModule').exit()
+        #It might not work
+        bm = ALProxy("ALBehaviorManager")
+        bm.stopBehavior('mainProgram')
+        self.onBehaviorStopped('mainProgram') #~ activate output of the box
         pass
 
     def onInput_onStop(self):
