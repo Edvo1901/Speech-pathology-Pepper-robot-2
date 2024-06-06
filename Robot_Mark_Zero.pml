@@ -133,10 +133,9 @@
         <File name="Music break music" src="html/assets/Music break music.wav" />
         <File name="README" src="README.md" />
         <File name="iconImage" src="html/assets/iconImage.png" />
-        <File name="feedback" src="html/components/feedback/feedback.js" />
-        <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
-        <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />
-        <File name="feedbackNavigate" src="html/components/feedback/feedbackNavigate.js" />
+        <File name="completePage" src="html/components/completePage/completePage.css" />
+        <File name="completePage" src="html/components/completePage/completePage.html" />
+        <File name="thVideo" src="html/assets/thVideo.mp4" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />

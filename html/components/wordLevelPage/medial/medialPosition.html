@@ -85,7 +85,7 @@
                     memory.raiseEvent("stepTwelve", readString);
                 });
             }
-            else
+            else if(buttonCount != 10)
             {
                 session.service("ALTextToSpeech").done(function (tts) {
                     tts.say(readString);

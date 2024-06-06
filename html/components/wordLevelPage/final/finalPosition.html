@@ -66,7 +66,7 @@
             console.log("Session disconnected");
        }
 
-        function readTextOnButton(button)
+       function readTextOnButton(button)
         {
             var readString = document.getElementById(button.id).innerHTML.toString();
             readString = readString.replace("<u>","");
@@ -80,11 +80,12 @@
             if(buttonCount > 9)
             {
                 console.log("triggered");
+
                 session.service("ALMemory").done(function (memory) {
-                    memory.raiseEvent("stepThirteen", readString);
+                    memory.raiseEvent("stepTwelve", readString);
                 });
             }
-            else
+            else if(buttonCount != 10)
             {
                 session.service("ALTextToSpeech").done(function (tts) {
                     tts.say(readString);
@@ -93,6 +94,7 @@
                 });
             }
         }
+
     </script>
 </body>
 </html>
