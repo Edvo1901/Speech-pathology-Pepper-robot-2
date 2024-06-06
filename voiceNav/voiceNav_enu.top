@@ -7,6 +7,10 @@ concept:(demoChat) ["Hello, Pepper"]
 concept:(lookChat) ["Why are you looking at me?"]
 concept:(responseUOne) ["I am good, thanks"]
 concept:(questionUOne) ["How are you pepper?"]
+concept:(questionUTwo) ["Who are you?"]
+concept:(questionUThree) ["Have you eaten today?"]
+concept:(questionUFour) ["What is speech therapy?"]
+concept:(questionUFive) ["What comes first, chicken or the egg?"]
 
 # Catching inputs and triggering outputs
 #u:(e:onStart) $onStopped=1
@@ -15,5 +19,10 @@ concept:(questionUOne) ["How are you pepper?"]
 u:([~demoChat e:input_demoChat]) $output_demoChat=1 Hi, I am Pepper I am your assistant for today's session, how can I help you.
 u:([~lookChat e:input_lookChat]) $output_lookChat=1 Because I have eyes.
 u:([~responseUOne e:input_responseUOne]) $output_responseUOne=1 Good to hear about it.
-u:([~questionUOne e:input_questionUOne]) $output_questionUOne=1 I am doing really well. Quite a good day for me today, hope you are doing same.
+u:([~questionUOne e:input_questionUOne]) $output_questionUOne=1 I am doing really well. Quite a good day for me today, hope you are having a good day too.
+u:([~questionUOne e:input_questionUTwo]) $output_questionUTwo=1 I am Pepper the robot, nice to meet you.
+u:([~questionUOne e:input_questionUThree]) $output_questionUThree=1 I did, thank you for asking, how about you?
+u:([~questionUOne e:input_questionUFour]) $output_questionUFour=1 Speech therapy is a specialised treatment aimed at enhancing communication skills and addressing speech disorders. Administered by speech-language pathologists, it focuses on improving articulation, fluency, voice quality, comprehension, and expression.​
+u:([~questionUOne e:input_questionUFive]) $output_questionUFive=1 I personally would say the egg comes first, but I'm not really an expert with that, maybe it could be the chicken.
+
 

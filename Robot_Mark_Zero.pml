@@ -134,6 +134,10 @@
         <File name="README" src="README.md" />
         <File name="iconImage" src="html/assets/iconImage.png" />
         <File name="icon" src="icon.png" />
+        <File name="feedback" src="html/components/feedback/feedback.js" />
+        <File name="feedbackCollection" src="html/components/feedback/feedbackCollection.js" />
+        <File name="feedbackModal" src="html/components/feedback/feedbackModal.js" />
+        <File name="feedbackNavigate" src="html/components/feedback/feedbackNavigate.js" />
     </Resources>
     <Topics>
         <Topic name="ExampleDialog_enu" src="behavior_1/ExampleDialog/ExampleDialog_enu.top" topicName="ExampleDialog" language="en_US" />
