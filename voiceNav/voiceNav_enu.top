@@ -16,6 +16,11 @@ concept:(questionUTwo) ["Who are you?"]
 concept:(questionUThree) ["Have you eaten today?"]
 concept:(questionUFour) ["What is speech therapy?"]
 concept:(questionUFive) ["What comes first, chicken or the egg?"]
+concept:(questionUSix) ["Tell me about the therapy session today"]
+concept:(questionUSeven) ["What are going to do today?"]
+concept:(byeOne) ["Good bye Pepper"]
+concept:(byeTwo) ["See you again Pepper"]
+concept:(byeThree) ["Bye bye Pepper"]
 
 # Catching inputs and triggering outputs
 #u:(e:onStart) $onStopped=1
@@ -34,5 +39,10 @@ u:([~questionUOne e:input_questionUTwo]) $output_questionUTwo=1 I am Pepper the 
 u:([~questionUOne e:input_questionUThree]) $output_questionUThree=1 I did, thank you for asking, how about you?
 u:([~questionUOne e:input_questionUFour]) $output_questionUFour=1 Speech therapy is a specialised treatment aimed at enhancing communication skills and addressing speech disorders. Administered by speech-language pathologists, it focuses on improving articulation, fluency, voice quality, comprehension, and expression.​
 u:([~questionUOne e:input_questionUFive]) $output_questionUFive=1 I personally would say the egg comes first, but I am not really an expert with that, maybe it could be the chicken.
+u:([~questionUOne e:input_questionUSix]) $output_questionUSix=1 We are going to learn the th sound today, we will have some interesting activities in between as well.
+u:([~questionUOne e:input_questionUSeven]) $output_questionUSeven=1 We are going to learn the th sound today, we will have some interesting activities in between as well.
+u:([~questionUOne e:input_byeOne]) $output_byeOne=1 Good bye. Have a nice day.
+u:([~questionUOne e:input_byeTwo]) $output_byeTwo=1 Good bye. Have a nice day.
+u:([~questionUOne e:input_byeThree]) $output_byeThree=1 Good bye. Have a nice day.
 
 
