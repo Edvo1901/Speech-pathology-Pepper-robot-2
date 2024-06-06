@@ -39,7 +39,6 @@
     <div class="feedback-button">
         <button class="btn btn-primary" id="homeButton">Home</button>
         <button class="btn btn-primary" id="sendButton" onClick="submitFeedback()">Submit</button>
-        <button class="btn btn-primary" id="exitButton" onclick="exitButton()">Exit</button>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -84,12 +83,6 @@
         }
         //setup localStorage END
 
-        function exitButton() {
-            session.service("ALMemory").done(function (memory) {
-                memory.raiseEvent("exit", true);
-            });
-        }
-
         // Function to send an email with feedback data
         function sendEmail() {
             var date = new Date();
@@ -133,7 +126,7 @@
             emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
                 function (response) {
                     console.log(">>>Success", response);
-                    window.location.href = "newpage.html";
+                    window.location.href = "../completePage/completePage.html";
                 },
                 function (error) {
                     console.log(">>>Error", error);
