@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Edvo1901/Speech-pathology-Pepper-robot-2">
-    <img src="https://media.discordapp.net/attachments/1215130743001587802/1244886996891992085/image.png?ex=6656bedc&is=66556d5c&hm=9f070e5b7a7990b6bf4f98290408bbacaae6603a373f287f0cf08ed29327af42&=&format=webp&quality=lossless&width=1366&height=936" alt="Logo" width="80" height="80">
+    <img src="https://media.discordapp.net/attachments/1215130743001587802/1249310812011499581/image.png?ex=6666d6dc&is=6665855c&hm=4b17d0d9ce6b919253746a5121c0f6b3ff979cca7f4b46e4a4aadb9bcc268f2d&=&format=webp&quality=lossless&width=1354&height=1359" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Speech pathology Pepper robot</h3>
@@ -60,9 +60,9 @@ To run the application, please do as follow:
 
 ### Prerequisites
 
-[Download Visual Studio Code]()
+[Download Visual Studio Code](https://code.visualstudio.com/)
 
-[Download Choreography]()
+[Download Choreography](https://www.aldebaran.com/en/support/nao-6/downloads-softwares)
 
 ### Installation
 
@@ -76,7 +76,7 @@ To run the application, please do as follow:
 <!-- USAGE EXAMPLES -->
 
 ## Usage
-
+![App Screenshot]()
 -   [Consent Page](https://media.discordapp.net/attachments/1215130743001587802/1244898507488235522/IMG_1451.jpg?ex=6656c995&is=66557815&hm=65e64a3517a516ecbbdd2a49d106e30d0e9fa133df5c3a60773c9f89e114ddd0&=&format=webp&width=702&height=936)
 -   [Lesson Selection](https://media.discordapp.net/attachments/1215130743001587802/1244898508121571378/IMG_1453.jpg?ex=6656c995&is=66557815&hm=93c8860f2e621a5b9ba259d1d1ebdb6803a584a565082bb3d008735dd176b55e&=&format=webp&width=702&height=936)
 -   [Movement 1](https://media.discordapp.net/attachments/1215130743001587802/1244898508952047716/IMG_1454.jpg?ex=6656c995&is=66557815&hm=9d88705ecc6043df3bc45dba1145f7424992d8075ce71b8933f73a782a6bd7d7&=&format=webp&width=702&height=936)
@@ -104,3 +104,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 3. Hoi Hang Leung
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Screenshots
+![App Screenshot](https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png)
