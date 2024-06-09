@@ -76,7 +76,7 @@ To run the application, please do as follow:
 <!-- USAGE EXAMPLES -->
 
 ## Usage
-![App Screenshot]()
+![App Screenshot](https://youtu.be/jdI22WutqSU)
 -   [Consent Page](https://media.discordapp.net/attachments/1215130743001587802/1244898507488235522/IMG_1451.jpg?ex=6656c995&is=66557815&hm=65e64a3517a516ecbbdd2a49d106e30d0e9fa133df5c3a60773c9f89e114ddd0&=&format=webp&width=702&height=936)
 -   [Lesson Selection](https://media.discordapp.net/attachments/1215130743001587802/1244898508121571378/IMG_1453.jpg?ex=6656c995&is=66557815&hm=93c8860f2e621a5b9ba259d1d1ebdb6803a584a565082bb3d008735dd176b55e&=&format=webp&width=702&height=936)
 -   [Movement 1](https://media.discordapp.net/attachments/1215130743001587802/1244898508952047716/IMG_1454.jpg?ex=6656c995&is=66557815&hm=9d88705ecc6043df3bc45dba1145f7424992d8075ce71b8933f73a782a6bd7d7&=&format=webp&width=702&height=936)
