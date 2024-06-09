@@ -104,6 +104,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 3. Hoi Hang Leung
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Screenshots
-![App Screenshot](https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png)
