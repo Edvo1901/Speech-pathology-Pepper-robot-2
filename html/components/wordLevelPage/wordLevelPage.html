@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,29 +9,26 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="wordLevelPage.css">
 </head>
+
 <body>
-    <div>
-        <a id="logo" href="./lessonSelection.html">
-            <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="962px">
-        </a>
-    </div>
+    <div id="header-placeholder"></div>
     <div class="container page-container" style="margin-top: 5vh">
         <div class="text-center card-style">
             <h2 class="card-title">Word Level</h2>
             <div class="row">
-                <div class="col-md-4">
+                <div class="image-col">
                     <button class="image-button" id="initialPosition">
-                        <img src="../../assets/initialPosition.webp" alt="Image 1" class="img-fluid">
+                        <img src="../../assets/initialPosition.webp" alt="initialPositionImage" class="img-fluid">
                     </button>
                 </div>
-                <div class="col-md-4">
+                <div class="image-col">
                     <button class="image-button" id="medialPosition">
-                        <img src="../../assets/medialPosition.webp" alt="Image 2" class="img-fluid">
+                        <img src="../../assets/medialPosition.webp" alt="medialPosition" class="img-fluid">
                     </button>
                 </div>
-                <div class="col-md-4">
+                <div class="image-col">
                     <button class="image-button" id="finalPosition">
-                        <img src="../../assets/finalPosition.webp" alt="Image 3" class="img-fluid">
+                        <img src="../../assets/finalPosition.webp" alt="finalPosition" class="img-fluid">
                     </button>
                 </div>
             </div>
@@ -38,10 +36,11 @@
                 <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
                 <button type="button" class="btn btn-primary" id="nextStep">Next</button>
                 <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
-                <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+                <button type="button" class="btn btn-primary" id="jumpToFeedback">Finish</button>
             </div>
         </div>
     </div>
+    <script src="../../js/importHeader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
@@ -53,24 +52,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script>
         var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
 
         }
         function disconnected(error) {
             console.log("Session disconnected");
-       }
+        }
 
         session.service("ALMemory").done(function (memory) {
 
-            memory.raiseEvent("stepTen", "step ten is running");
+            memory.raiseEvent("stepTen", true);
         });
     </script>
 </body>
+
 </html>

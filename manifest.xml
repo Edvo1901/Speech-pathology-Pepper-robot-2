@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<package version="0.0.0" uuid="robot_mark_zero-f2ab55">
+<package version="1.0.0" uuid="robot_mark_zero-f2ab55">
  <names>
-  <name lang="en_US">Robot_Mark_Zero</name>
+  <name lang="en_US">Speech TheraPepPist</name>
  </names>
  <supportedLanguages>
   <language>en_US</language>
@@ -13,7 +13,17 @@
   <behaviorContent path="behavior_1">
    <userRequestable/>
    <nature>interactive</nature>
+   <names>
+    <name lang="en_US">mainProgram</name>
+   </names>
    <permissions/>
   </behaviorContent>
+  <dialogContent typeVersion="1.0" topicName="voiceNav">
+   <topic path="voiceNav/voiceNav_enu.top" language="en_US"/>
+  </dialogContent>
  </contents>
+ <requirements>
+  <naoqiRequirement maxVersion="2.5" minVersion="2.5"/>
+  <robotRequirement model="JULIETTE"/>
+ </requirements>
 </package>

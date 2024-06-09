@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +9,55 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="syllableLevelPage.css">
 </head>
+
 <body>
-    <div>
-        <a id="logo" href="./lessonSelection.html">
-            <img src="../../assets/header.png" alt="Pepper Robot" height="150px" width="962px">
-        </a>
-    </div>
+    <div id="header-placeholder"></div>
     <div class="container page-container" style="margin-top: 3vh">
         <div class="text-center card-style">
             <h2 class="card-title">Syllable Level</h2>
             <div class="row">
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/eeImage.webp" alt="Image 1" class="img-fluid">
+                        <img src="../../assets/EE.png" alt="eeSound" class="img-fluid" id="imageOne"
+                            onClick="imageButton('imageOne')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/ayImage.webp" alt="Image 2" class="img-fluid">
+                        <img src="../../assets/AY.png" alt="aySound" class="img-fluid" id="imageTwo"
+                            onClick="imageButton('imageTwo')">
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="image-button">
-                        <img src="../../assets/ooImage.webp" alt="Image 3" class="img-fluid">
+                        <img src="../../assets/OO.png" alt="ooSound" class="img-fluid" id="imageThree"
+                            onClick="imageButton('imageThree')">
                     </button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/owImage.webp" alt="Image 4" class="img-fluid">
+                        <img src="../../assets/OW.png" alt="owSound" class="img-fluid" id="imageFour"
+                            onClick="imageButton('imageFour')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/oyImage.webp" alt="Image 5" class="img-fluid">
+                        <img src="../../assets/OY.png" alt="oySound" class="img-fluid" id="imageFive"
+                            onClick="imageButton('imageFive')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/iiImage.webp" alt="Image 6" class="img-fluid">
+                        <img src="../../assets/II.png" alt="iiSound" class="img-fluid" id="imageSix"
+                            onClick="imageButton('imageSix')">
                     </button>
                 </div>
                 <div class="col-md-3">
                     <button class="image-button">
-                        <img src="../../assets/ohImage.webp" alt="Image 7" class="img-fluid">
+                        <img src="../../assets/OH.png" alt="ohSound" class="img-fluid" id="imageSeven"
+                            onClick="imageButton('imageSeven')">
                     </button>
                 </div>
             </div>
@@ -60,10 +65,11 @@
                 <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
                 <button type="button" class="btn btn-primary" id="nextStep">Next</button>
                 <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
-                <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+                <button type="button" class="btn btn-primary" id="jumpToFeedback">Finish</button>
             </div>
         </div>
     </div>
+    <script src="../../js/importHeader.js"></script>
     <script src="/libs/qimessaging/2/qimessaging.js"></script>
     <script src="/libs/qi/2/qi.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js"></script>
@@ -71,32 +77,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="syllableLevelPage.js"></script>
     <script>
 
         var session = new QiSession(function () {
             session = s;
-        }, disconnected,location.host);
+        }, disconnected, location.host);
 
         function connected(s) {
             //If you want to subscribe so some events (to send info pepper->tablet) call the function here
         }
         function disconnected(error) {
             console.log("Session disconnected");
-       }
+        }
 
-        session.service("ALTextToSpeech").done(function (tts) {
-            tts.say("step eight running");
-        }).fail(function (error) {
-        console.log("An error occurred:", error);
-        });
+        function imageButton(input) {
+            //delete unnessary string for the src string
+            var speechString = document.getElementById(input).src;
+            speechString = speechString.split("/");
+            speechString = speechString[speechString.length - 1];
+            speechString = speechString.split(".");
+            speechString = speechString[0];
 
-        session.service("ALMemory").done(function (memory) {
+            //if two letter is the same e.g. OO, it should just O in ALTextToSpeech
+            if (speechString[0] == speechString[1] && speechString != "OO") {
+                speechString = speechString[0];
+            }
 
-            //this dont work, research more
-            memory.raiseEvent("stepEight", True);
-        });
+            //FOR DEBUG
+            console.log(speechString);
+
+            session.service("ALTextToSpeech").done(function (tts) {
+                tts.say(speechString.toLowerCase());
+            }).fail(function (error) {
+                console.log("An error occurred:", error);
+            });
+        }
 
     </script>
 </body>
+
 </html>

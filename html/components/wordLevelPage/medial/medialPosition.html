@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medial Position</title>
+    <title>Medial position</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="medialPosition.css">
 </head>
 <body>
-    <div>
-        <a id="logo" href="./lessonSelection.html">
-            <img src="../../../assets/header.png" alt="Pepper Robot" height="150px" width="962px">
-        </a>
-    </div>
     <div class="container text-center mt-5 page-container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-auto">
+        <div class="row justify-content-between align-items-center">
+            <div class="col d-flex justify-content-start">
                 <div class="button-column">
-                    <button type="button" class="btn btn-primary mb-2">Word 1</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 2</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 3</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 4</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 5</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord01" onClick="readTextOnButton(this)">Word 1</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord02" onClick="readTextOnButton(this)">Word 2</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord03" onClick="readTextOnButton(this)">Word 3</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord04" onClick="readTextOnButton(this)">Word 4</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord05" onClick="readTextOnButton(this)">Word 5</button>
                 </div>
             </div>
             <div class="col-auto">
-                <h1>Medial</h1>
+                <h1 class="card-title">Medial</h1>
             </div>
-            <div class="col-auto">
+            <div class="col d-flex justify-content-end">
                 <div class="button-column">
-                    <button type="button" class="btn btn-primary mb-2">Word 6</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 7</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 8</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 9</button>
-                    <button type="button" class="btn btn-primary mb-2">Word 10</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord06" onClick="readTextOnButton(this)">Word 6</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord07" onClick="readTextOnButton(this)">Word 7</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord08" onClick="readTextOnButton(this)">Word 8</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord09" onClick="readTextOnButton(this)">Word 9</button>
+                    <button type="button" class="btn btn-primary mb-2 word-button" id="mWord10" onClick="readTextOnButton(this)">Word 10</button>
                 </div>
             </div>
         </div>
@@ -42,12 +37,66 @@
             <button type="button" class="btn btn-primary" id="backToPreviousPage">Back</button>
             <button type="button" class="btn btn-primary" id="nextStep">Next</button>
             <button type="button" class="btn btn-primary" id="backToHomePage">Home</button>
-            <button type="button" class="btn btn-primary" id="" disabled>Finish</button>
+            <button type="button" class="btn btn-primary" id="jumpToFeedback">Finish</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="medialPosition.js"></script>
+    <script src="/libs/qimessaging/2/qimessaging.js"></script>
+    <script src="/libs/qi/2/qi.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script>
+        localStorage.setItem("buttonCount", 0);
+        var session = new QiSession(function () {
+            session = s;
+        }, disconnected,location.host);
+
+        function connected(s) {
+
+        }
+        function disconnected(error) {
+            console.log("Session disconnected");
+       }
+
+        function readTextOnButton(button)
+        {
+            var readString = document.getElementById(button.id).innerHTML.toString();
+            readString = readString.replace("<u>","");
+            readString = readString.replace("</u>","");
+            console.log(readString);
+            var buttonCount = localStorage.getItem("buttonCount");
+            buttonCount++;
+            console.log(buttonCount);
+            localStorage.setItem("buttonCount", buttonCount);
+
+            if(buttonCount > 9)
+            {
+                console.log("triggered");
+
+                session.service("ALMemory").done(function (memory) {
+                    memory.raiseEvent("stepTwelve", readString);
+                });
+            }
+            else if(buttonCount != 10)
+            {
+                session.service("ALTextToSpeech").done(function (tts) {
+                    tts.say(readString);
+                }).fail(function (error) {
+                    console.log("An error occurred:", error);
+                });
+            }
+        }
+
+
+
+    </script>
 </body>
 </html>

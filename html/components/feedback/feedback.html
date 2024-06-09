@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback page</title>
+    <link rel="stylesheet" href="feedback.css" />
+    <style>
+        .selected {
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header-placeholder"></div>
+    <div class="d-flex justify-content-center align-items-center" style="margin-top: 5vh">
+        <div class="card blur-card text-center">
+            <div class="card-body feedback-container">
+                <div class="feedback-content">
+                    <img src="../../assets/Rating_face_1.png" alt="Dissatisfy" class="feedback-image">
+                </div>
+                <div class="feedback-content">
+                    <img src="../../assets/Rating_face_2.png" alt="Unhappy" class="feedback-image">
+                </div>
+                <div class="feedback-content">
+                    <img src="../../assets/Rating_face_3.png" alt="Neutral" class="feedback-image">
+                </div>
+                <div class="feedback-content">
+                    <img src="../../assets/Rating_face_4.png" alt="Happy" class="feedback-image">
+                </div>
+                <div class="feedback-content">
+                    <img src="../../assets/Rating_face_5.png" alt="Exceptional" class="feedback-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feedback-button">
+        <button class="btn btn-primary" id="homeButton">Home</button>
+        <button class="btn btn-primary" id="sendButton" onClick="submitFeedback()">Submit</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../../js/importHeader.js"></script>
+    <script src="/libs/qimessaging/2/qimessaging.js"></script>
+    <script src="/libs/qi/2/qi.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qi-js/2.10.3/qi.min.js"></script>
+    <script src="https://www.promisejs.org/polyfills/promise-6.0.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.0/dist/email.min.js"></script>
+    <script>
+        var session = new QiSession(function () {
+            session = s;
+        }, disconnected, location.host);
+
+        function connected(s) {
+
+        }
+        function disconnected(error) {
+            console.log("Session disconnected");
+        }
+    </script>
+    <script>
+        emailjs.init("C23If__KQRFS7qbwo");
+
+        //setup localStorage
+        var currentIdFound = 0;
+        var lastId;
+
+        for (var i = 0, len = localStorage.length; i < len; ++i) {
+            if (localStorage.getItem(localStorage.key(i)) == "lastId") {
+                currentIdFound = 1;
+            }
+        }
+        if (currentIdFound == 0) {
+            localStorage.setItem("lastId", -1);
+            var bigArray = new Object();
+            localStorage.setItem("feedbackData", JSON.stringify(bigArray));
+            console.log(localStorage.getItem("feedbackData"));
+        }
+        //setup localStorage END
+
+        // Function to send an email with feedback data
+        function sendEmail() {
+            var date = new Date();
+            var day = ('0' + date.getDate()).slice(-2);
+            var month = ('0' + (date.getMonth() + 1)).slice(-2);
+            var year = date.getFullYear();
+            var dateString = day + '-' + month + '-' + year
+
+            // Retrieve feedback data from local storage
+            var feedbackData = localStorage.getItem("feedbackData");
+            feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+
+            //---------------new part---------------Create string for html table in email//
+            var tableTitleString = "<tr><th>Id</th><th>Date</th><th>Time</th><th>Feedback</th></tr>";
+            var rowString = [];
+
+            var feedbackData = JSON.parse(localStorage.getItem("feedbackData"));
+            var length = Number(localStorage.getItem("lastId")) + 1
+
+            for (var i = 0; i < length; i++) {
+                rowString[i] = "<td>" + feedbackData[i].id + "</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].date + "</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].time + "</td>";
+                rowString[i] = rowString[i] + "<td>" + feedbackData[i].feedbackData + "</td>";
+                rowString[i] = "<tr>" + rowString[i] + "</tr>";
+            }
+
+            for (var x = 0; x < rowString.length; x++) {
+                tableTitleString = tableTitleString + rowString[x];
+            }
+
+            tableTitleString = "<table>" + tableTitleString + "</table>";
+            //---------------new part---------------//
+
+            var templateParams = {
+                sendEmail: "jeff.neo@unisa.edu.au",
+                date: dateString,
+                tableHtml: tableTitleString,
+            };
+
+            emailjs.send("pepperFeedbackEmail", "weeklyEmailTemp", templateParams).then(
+                function (response) {
+                    console.log(">>>Success", response);
+                    window.location.href = "../completePage/completePage.html";
+                },
+                function (error) {
+                    console.log(">>>Error", error);
+                }
+            );
+        }
+
+        // Variable to store selected feedback
+        var selectedFeedback = null;
+
+        // Function to handle feedback image click
+        var feedbackImages = document.querySelectorAll(".feedback-image");
+        for (var i = 0; i < feedbackImages.length; i++) {
+            feedbackImages[i].addEventListener("click", function () {
+                // Remove 'selected' class from all images
+                for (var j = 0; j < feedbackImages.length; j++) {
+                    feedbackImages[j].classList.remove("selected");
+                }
+
+                // Add 'selected' class to the clicked image
+                this.classList.add("selected");
+
+                // Store the selected feedback
+                selectedFeedback = this.alt;
+            });
+        }
+
+        // Function to handle submit button click
+        function submitFeedback() {
+            if (selectedFeedback) {
+                lastId = Number(localStorage.getItem("lastId"));
+
+                // Get current date
+                var date = new Date();
+                var day = ('0' + date.getDate()).slice(-2);
+                var month = ('0' + (date.getMonth() + 1)).slice(-2);
+                var year = date.getFullYear();
+                var dateString = day + '-' + month + '-' + year
+                var thisId = lastId + 1;
+
+            //Create object for a single feedback
+            var dataRow = new Object();
+            dataRow.id = thisId;
+            dataRow.date  = dateString;
+            dataRow.feedbackData = selectedFeedback;
+            dataRow.time = (date.getHours() < 10) ? "0" + date.getHours() + ":" : date.getHours() + ":" ;
+            dataRow.time = (date.getMinutes() < 10) ? dataRow.time + "0" + date.getMinutes() : dataRow.time + date.getMinutes();
+            var jsonString= JSON.stringify(dataRow);
+
+                // Get json object from localStorage
+                var feedbackData = localStorage.getItem("feedbackData");
+                feedbackData = feedbackData ? JSON.parse(feedbackData) : {};
+
+                // Add the feedback item in json object
+                feedbackData[thisId] = dataRow;
+                localStorage.setItem("feedbackData", JSON.stringify(feedbackData));
+                localStorage.setItem("lastId", thisId);
+
+                sendEmail()
+            } else {
+                alert("Please select a feedback option before submitting.");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("homeButton").addEventListener("click", function () {
+                window.location.href = "../lessonSelection/lessonSelection.html";
+            });
+        });
+    </script>
+</body>
+
+</html>

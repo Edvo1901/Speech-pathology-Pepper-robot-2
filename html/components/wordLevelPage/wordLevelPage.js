@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('nextStep').addEventListener('click', function() {
-        window.location.href = './wordLevelPage.html';
+        window.location.href = '../feedback/feedback.html';
+    });
+
+    document.getElementById('jumpToFeedback').addEventListener('click', function() {
+        window.location.href = '../feedback/feedback.html';
     });
 
     document.getElementById('initialPosition').addEventListener('click', function() {
